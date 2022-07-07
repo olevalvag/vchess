@@ -1,0 +1,21 @@
+<ion-header class="app_nav_header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Quick Game
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <game-info-form (doneClick)="onFormDoneClick()"
+                  (inputScroll)="scrollInputIntoView($event)"
+                  [createMode]="true"
+                  [game]="game"
+                  [layoutConfig]="layoutConfig">
+  </game-info-form>
+
+</ion-content>

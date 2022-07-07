@@ -1,0 +1,137 @@
+$captionSize: 18px;
+$squareSize: 40px;
+$boardSize: $squareSize * 8 * 2;
+$captionBackground: brown;
+$captionColor: white;
+$captionBorder: 1px black solid;
+
+board {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .boardContainer {
+    height: 100%;
+  }
+
+  .block_moves {
+    height: 100%;
+    width: 100%;
+    z-index: 6000;
+    position: absolute;
+  }
+
+  .boardContent {
+    width: 100%;
+    height: 100%;
+    //margin: 10px auto;
+    position: relative;
+  }
+
+  .boardMain {
+  }
+
+  .boardElement {
+    margin: auto;
+  }
+
+  .coord_text {
+    font-size: 10px;
+    color: ghostwhite;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+
+  .chars_cnt {
+    font-weight: 500;
+    z-index: 1005;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 91%;
+    padding: 0px 5px;
+
+    div {
+      @extend .coord_text;
+    }
+  }
+
+  .rank_cnt {
+    z-index: 1005;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    color: ghostwhite;
+    flex-direction: column;
+    padding: 5px;
+    height: 95%;
+    right: 0;
+
+    div {
+      @extend .coord_text;
+    }
+  }
+
+  .chars_top_cnt {
+    @extend .chars_cnt;
+    //transform: rotate(180deg);
+    top: 0;
+    transform: scaleY(-1) scaleX(-1);
+  }
+
+  .rank_top_cnt {
+    @extend .rank_cnt;
+    transform: rotate(180deg);
+  }
+
+  .sso_rank {
+    div { transform: rotate(180deg);}
+  }
+
+  .chars_bottom_cnt {
+    @extend .chars_cnt;
+    bottom: 0;
+  }
+
+  .rank_bottom_cnt {
+    @extend .rank_cnt;
+    width: 0px;
+    left: 0;
+    padding-top: 25px;
+    transform: scaleX(-1) scaleY(-1) rotate(180deg);
+  }
+
+  .swap_sides {
+    .boardElement {
+    }
+
+    .chars_top_cnt {
+      transform: scaleY(-1);
+
+      div {
+        transform: scaleX(-1);
+      }
+    }
+
+    .chars_bottom_cnt {
+      transform: scaleX(-1);
+
+      div {
+        transform: scaleX(-1);
+      }
+    }
+
+    .rank_top_cnt {
+      transform: rotate(0deg);
+    }
+
+    .rank_bottom_cnt {
+      padding-top: 0px;
+      padding-bottom: 25px;
+      transform: scaleX(-1) scaleY(-1) rotate(0deg);
+    }
+
+  }
+
+}

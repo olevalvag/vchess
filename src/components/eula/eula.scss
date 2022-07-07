@@ -1,0 +1,27 @@
+eula {
+
+  position: relative;
+
+  .text_cnt {
+    margin: 20px auto;
+    text-align: justify;
+    width: 85%;
+    font-size: 1.2em;
+
+    .sub_title {
+      font-width: 600;
+      font-size: 1.5em;
+    }
+  }
+
+  .btn_cnt {
+    margin: 10px auto 20px;
+    text-align: center;
+
+    button {
+      font-size: 1em;
+    }
+  }
+
+
+}

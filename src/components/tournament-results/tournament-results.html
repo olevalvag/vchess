@@ -1,0 +1,25 @@
+<ion-header class="app-modal-header">
+  <ion-navbar>
+    <ion-title> Tournament Results</ion-title>
+    <ion-buttons end>
+      <button (click)="closeModal()" icon-only ion-button>
+        <ion-icon item-right name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <!--Spinner-->
+  <spinner [message]="'Loading results'" [visible]="loading"></spinner>
+
+  <div class="main_iframe_cnt">
+    <div class="mask"></div>
+    <div class="iframe_cnt">
+      <iframe (load)="onIframeDone()" [src]="url" class="iframe" scrolling="yes"></iframe>
+    </div>
+  </div>
+
+
+</ion-content>

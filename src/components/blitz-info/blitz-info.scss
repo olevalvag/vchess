@@ -1,0 +1,91 @@
+blitz-info {
+
+  .blitz_main_cnt {
+    padding: 5px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .info_cnt {
+    order: 1;
+    writing-mode: vertical-rl;
+    text-align: center;
+    font-weight: 400;
+
+    .counts_cnt {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.3em;
+
+      .white_count {
+        order: 1;
+      }
+
+      .divider {
+        order: 2;
+        margin: 0.5em 0px;
+      }
+
+      .black_count {
+        order: 3;
+      }
+    }
+
+    .app_name {
+      font-weight: 600;
+      font-size: 2.5em;
+    }
+  }
+
+  .logo_cnt {
+    order: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 2em;
+
+    .logo {
+      width: 200px;
+      height: 200px;
+      background: transparent;
+      transform: rotate(90deg);
+      border-radius: 20px;
+
+      img {
+        border-radius: 20px;
+      }
+    }
+  }
+
+  ////////////////// LAYOUT CONFIG //////////////
+  .swap_sections_order {
+    .counts_cnt {
+      order: 2 !important;
+      transform: rotate(180deg);
+    }
+
+    .logo_cnt {
+      order: 1 !important;
+
+      .logo {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  .swap_sides_order {
+    .counts_cnt {
+      .white_count {
+        order: 3 !important;
+      }
+
+      .black_count {
+        order: 1 !important;
+      }
+    }
+  }
+
+}

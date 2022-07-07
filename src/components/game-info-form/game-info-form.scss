@@ -1,0 +1,253 @@
+game-info-form {
+
+
+  // ----------------------- MIXINGS
+  .custom-item-inner {
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+
+  .vh-align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // ----------------------- MIXINGS
+
+  .basic_info_cnt {
+    border: 1px solid #7d7d7d;
+    padding: 1em;
+    background-color: white;
+    margin-top: 1em;
+    margin-bottom: 2em;
+
+    .mode_clock_start_cnt {
+      .item-inner { @extend .custom-item-inner;}
+      ion-select { max-width: 100%; padding: 5px 3px;}
+      ion-item { padding: 0; }
+      ion-label { margin: 0; font-size: 0.8em !important; color: darkgray !important;}
+    }
+
+    .start_cnt {
+      @extend .vh-align;
+      button { font-size: 2em;}
+    }
+  }
+
+  .game-info-form-main {
+    padding-bottom: 5em !important;
+  }
+
+  .create_btn_cnt {
+    text-align: center;
+    margin-top: 2em;
+
+    button {
+      font-size: 2em;
+    }
+  }
+
+  .clock_settings_cnt {
+    margin-top: 15px;
+
+    .clock_cnt button {
+      margin-left: 50px;
+    }
+
+    .quick_opts {
+      .selected_clock {
+        background-color: orange !important;
+      }
+
+      //button {background-color: lighten(#488aff, 15%);}
+    }
+  }
+
+  .names_cnt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    .autocomplete_cnt {
+      position: relative;
+      .item-inner {
+        @extend .custom-item-inner;
+        .label { color: darkgray !important; font-size: 1.2em !important}
+      }
+    }
+    .player_cnt {
+      width: 100%;
+      .fide_id {
+        margin-bottom: 0.5em;
+        padding-left: 2em;
+        font-style: italic;
+        color: gray;
+        font-size: 0.9em;
+      }
+    }
+    ion-list {
+      max-height: 15em;
+      position: absolute;
+      border: 2px solid grey;
+      width: 100%;
+      z-index: 10;
+      overflow: auto;
+
+      ion-item {
+        background-color: whitesmoke;
+      }
+    }
+
+  }
+
+  .inputs_opts {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1em;
+    .players_names {flex: 1;}
+    .toggles {flex: 0.5;}
+  }
+
+  .settings_cnt {
+    width: 100%;
+    padding: 0px 16px;
+  }
+
+  /////////////////////////// Toggle  -------------------------
+  .custom_toggle_cnt {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+
+    ion-label {
+      margin-bottom: 0;
+    }
+    .item-inner {
+      border-bottom: none !important;
+      box-shadow: none !important;
+    }
+
+    .toggle_item {
+      width: auto !important;
+    }
+
+    .custom_toggle {
+      width: 45px;
+
+      .toggle-inner {
+        border: 1px solid #9c9a9a;
+        top: -6px;
+        width: 25px;
+        height: 25px;
+      }
+
+      .toggle-icon {
+        border: 1px solid #9c9a9a;
+        border-left: none;
+      }
+    }
+
+    .toggle-checked {
+      .toggle-inner {
+        transform: translate3d(25px, 0, 0);
+        border: none;
+      }
+
+      .toggle-icon {
+        border: none;
+      }
+    }
+  }
+
+  .extra_btn {
+    text-align: center;
+    button { margin: 2em auto; }
+  }
+
+  .extra_opts_cnt {
+    .item-inner {
+      @extend .custom-item-inner;
+      .label { color: darkgray !important; font-size: 1.2em !important}
+    }
+  }
+
+  .common_hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 70%;
+    margin: auto;
+
+    .hashtag {
+      text-decoration: underline;
+      color: #488aff;
+      font-size: 0.8em;
+    }
+  }
+
+  .live_fields_cnt {
+
+    spinner .app_spinner {
+      margin: 2em auto 1em;
+    }
+
+    .live_info {
+      background: #f5f5f5b8;
+      padding: 0.5em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hashtag_cnt {
+      width: 50%;
+      margin: 0em auto 2em;
+
+      ion-label {
+        margin-top: 0;
+      }
+
+      ion-input > input {
+        margin-bottom: 3px;
+        text-transform: lowercase;
+      }
+
+      .invalid_hashtag {
+        margin-left: 5px;
+        color: red;
+        width: 70%;
+        text-align: start;
+        font-size: 0.9em;
+        font-style: italic;
+      }
+
+      .optional {
+        font-size: 0.6em;
+      }
+    }
+
+    .url_cnt {
+      .title {
+        font-size: 1.2em;
+        font-weight: 600;
+      }
+
+      .live_url {
+        margin: 0.6em 0em 0em 1em;
+      }
+    }
+
+  }
+
+  flip-layout {
+    .inner_layout {
+      width: 90%;
+      margin: auto;
+    }
+  }
+
+}

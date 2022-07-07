@@ -1,0 +1,78 @@
+recovery-page {
+
+  .scroll-content {
+    background: #f3f3f3;
+  }
+
+  .total_count {
+
+    font-size: 1.5em;
+    text-align: center;
+    color: $app_dark;
+  }
+
+  .divider_title {
+    font-size: 1.5em;
+    color: $app_dark;
+    font-weight: 500;
+    font-style: italic;
+    margin-top: 1.3em;
+  }
+
+  .options_cnt {
+    background: white;
+    padding: 10px;
+    margin-bottom: 2.5em;
+    border-radius: 10px;
+    border: 1px solid lightslategray;
+    box-shadow: 1px 1px 0px 0px $app_dark;
+  }
+
+  .local_toggle_cnt {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    ion-icon {
+      font-size: 3em;
+      color: $app_dark;
+
+      span {
+        color: black;
+        font-size: 0.5em;
+        vertical-align: middle;
+        margin: 0px 10px 0px 5px;
+      }
+    }
+
+    ion-toggle {
+      zoom: 1.5;
+    }
+  }
+
+  .game_card {
+    border-left: 10px solid #564d4d;
+
+    .card-header {
+      .title {
+        font-size: 1.3em;
+        font-weight: 500;
+        margin-bottom: 3px;
+        text-decoration: underline;
+      }
+
+      .dates {
+        margin-left: 10px;
+        color: dimgray;
+        font-size: 0.8em;
+      }
+
+      ion-icon {
+        font-size: 2.5em;
+        float: left;
+        margin: 0px 15px;
+      }
+    }
+  }
+
+}

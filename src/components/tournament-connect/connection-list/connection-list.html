@@ -1,0 +1,126 @@
+<!--INTERNET CONNECTION-->
+<ion-grid *ngIf="isInternetVisible()">
+
+  <ion-row>
+    <ion-col class="step-name"> * Server connection</ion-col>
+    <ion-col>
+      <ion-icon *ngIf="isInternetStatusSuccess()" class="success-icon" name="md-checkmark-circle"></ion-icon>
+      <ion-icon *ngIf="isInternetStatusFail()" class="error-icon" name="md-close-circle"></ion-icon>
+      <ion-icon *ngIf="isInternetStatusPending()" class="pending-icon" name="md-pulse"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="isInternetStatusFail()">
+    <ion-col class="error-row">
+      <div class="error-message"> Waiting for internet, the system will retry automatic.</div>
+      <button (click)="onStopInternetCheck()" color="danger" ion-button small> Abort</button>
+    </ion-col>
+  </ion-row>
+
+</ion-grid>
+
+
+<!--TOURNAMENT FETCH-->
+<ion-grid *ngIf="isTournamentVisible()">
+
+  <ion-row>
+    <ion-col class="step-name"> * Tournament connection </ion-col>
+    <ion-col>
+      <ion-icon *ngIf="isTournamentStatusSuccess()" class="success-icon" name="md-checkmark-circle"></ion-icon>
+      <ion-icon *ngIf="isTournamentStatusFail()" class="error-icon" name="md-close-circle"></ion-icon>
+      <ion-icon *ngIf="isTournamentStatusPending()" class="pending-icon" name="md-pulse"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="isTournamentStatusFail()">
+    <ion-col class="error-row">
+      <div (countReach)="toggleTournamentFailResponse()" ClickCounter [clickLimit]="5" class="error-message">
+        The app is currently trying to connect to the server every 10 seconds. Attempt {{getTournamentRetryAttempt()}}
+      </div>
+      <div *ngIf="isTournamentStatusFail() && showTournamentFailResponse()" class="request-error-msg">
+        --- {{getTournamentFailResponse()}} ---
+      </div>
+
+      <button (click)="onAbortTournamentFetch()" color="danger" ion-button small> Abort</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="isTournamentStatusSuccess()">
+    <ion-col class="error-row">
+      <button (click)="onTournamentPinChange()" color="primary" ion-button small> Change PIN</button>
+      <button (click)="onRegisterTabletManually()" *ngIf="isRegisterTabletStatusAborted()" color="third" ion-button
+              small> Register Tablet
+      </button>
+    </ion-col>
+  </ion-row>
+
+</ion-grid>
+
+
+<!--REGISTER TABLET-->
+<ion-grid *ngIf="isRegisterTabletVisible()">
+
+  <ion-row>
+    <ion-col class="step-name">
+      <div> * Register tablet </div>
+      <div class="tablet-name"> {{getCurrentTabletName}} </div>
+    </ion-col>
+    <ion-col>
+      <ion-icon *ngIf="isRegisterTabletStatusSuccess()" class="success-icon" name="md-checkmark-circle"></ion-icon>
+      <ion-icon *ngIf="isRegisterTabletStatusFail()" class="error-icon" name="md-close-circle"></ion-icon>
+      <ion-icon *ngIf="isRegisterTabletStatusPending()" class="pending-icon" name="md-pulse"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="isRegisterTabletStatusFail()">
+    <ion-col class="error-row">
+      <div (countReach)="toggleRegisterTabletResponse()" ClickCounter [clickLimit]="5" class="error-message">
+        The app is currently trying to register the tablet on the tournament every 10 seconds.
+        Attempt {{getRegisterTabletRetryAttempt()}}
+      </div>
+      <div *ngIf="isRegisterTabletStatusFail() && showRegisterTabletFailResponse()" class="request-error-msg">
+        --- {{getRegisterTabletFailResponse()}} ---
+      </div>
+
+      <button (click)="onRegisterTabletAbort()" color="danger" ion-button small> Abort</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="isAssignedGameStatusAborted() && getCurrentTablet()">
+    <ion-col class="error-row">
+      <button (click)="onAssignedGameManually()" color="primary" ion-button small> Get assigned game</button>
+    </ion-col>
+  </ion-row>
+
+</ion-grid>
+
+
+<!--ASSIGNED GAME-->
+<ion-grid *ngIf="isAssignedGameVisible()">
+
+  <ion-row>
+    <ion-col class="step-name"> * Assigned game</ion-col>
+
+    <ion-col>
+      <ion-icon *ngIf="isAssignedGameStatusSuccess()" class="success-icon" name="md-checkmark-circle"></ion-icon>
+      <ion-icon *ngIf="isAssignedGameStatusFail()" class="error-icon" name="md-close-circle"></ion-icon>
+      <ion-icon *ngIf="isAssignedGameStatusPending()" class="pending-icon" name="md-pulse"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="isAssignedGameStatusFail()">
+    <ion-col class="error-row">
+
+      <div (countReach)="toggleAssignedGameResponse()" ClickCounter [clickLimit]="5" class="error-message">
+        The app is currently trying to get the assigned game for this tablet every 10 seconds.
+        Attempt {{getGameRetryAttempt()}}
+      </div>
+      <div *ngIf="isAssignedGameStatusFail() && showAssignedGameFailResponse()" class="request-error-msg">
+        --- {{getAssignedGameFailResponse()}} ---
+      </div>
+
+      <button (click)="onAssignedGameAbort()" color="danger" ion-button small> Abort</button>
+    </ion-col>
+  </ion-row>
+
+</ion-grid>

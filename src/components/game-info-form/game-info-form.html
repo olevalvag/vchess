@@ -1,0 +1,230 @@
+<div *ngIf="form">
+
+  <form #formMainCnt [formGroup]="form" class="game-info-form-main game_form">
+
+
+    <ion-grid class="basic_info_cnt">
+
+      <!--MODE CLOCK START-->
+      <ion-row class="mode_clock_start_cnt" *ngIf="createMode">
+
+        <ion-col>
+          <ion-row class="mode_clock_start_cnt">
+
+            <!--Game mode (Time control)-->
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>
+                  Mode
+                </ion-label>
+                <ion-select interface="popover" formControlName="time_control">
+                  <ion-option *ngFor="let mode of timeControls" [value]="mode.value"> {{mode.label}} </ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+
+            <!--Clock settings-->
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>
+                  Clock setting
+                </ion-label>
+                <ion-select interface="popover"  formControlName="clock_template" (ionChange)="onClockTemplateSelected($event)">
+                  <ion-option *ngFor="let templateKey of getClockTemplatesKeys"
+                              [value]="templateKey"> {{templateKey}} </ion-option>
+                  <ion-option [value]="'custom'"> Custom</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+
+          </ion-row>
+        </ion-col>
+
+        <!--Start button-->
+        <ion-col class="start_cnt">
+          <button (click)="onDoneClick()" [disabled]="!formValid()" color="secondary" ion-button large> Start</button>
+        </ion-col>
+
+      </ion-row>
+
+      <!--NAMES - TOGGLES-->
+      <ion-row>
+
+        <!--Players input names-->
+        <ion-col>
+          <div class="names_cnt">
+
+            <!--WHITE -->
+            <div class="player_cnt">
+              <ion-item class="autocomplete_cnt">
+                <ion-label stacked> <ion-icon name="md-contact"></ion-icon> White player name </ion-label>
+                <ion-input (ionFocus)="scrollInputIntoView('white_name')"
+                           [value]="capitalizeNames('white_player_name')"
+                           formControlName="white_player_name"
+                           id="white_name"
+                           type="text"></ion-input>
+              </ion-item>
+              <div class="fide_id" *ngIf="game.white_player_fide_id"> Fide Id: {{game.white_player_fide_id}} </div>
+              <ion-list *ngIf="fidePlayers.length > 0 && white_player_fide" class="fide_item">
+                <ion-item (click)="onWhiteFidePlayerClick(player)" *ngFor="let player of fidePlayers" class="fide_item">
+                  <div class="fide_item"> {{player.full_name}} </div>
+                </ion-item>
+              </ion-list>
+            </div>
+
+            <!--BLACK -->
+            <div class="player_cnt">
+              <ion-item class="autocomplete_cnt">
+              <ion-label stacked> <ion-icon name="md-contact"></ion-icon> Black player name </ion-label>
+              <ion-input (ionFocus)="scrollInputIntoView('black_name')" [value]="capitalizeNames('black_player_name')"
+                         formControlName="black_player_name"
+                         id="black_name"
+                         type="text"></ion-input>
+
+            </ion-item>
+              <div class="fide_id" *ngIf="game.black_player_fide_id"> Fide Id: {{game.black_player_fide_id}} </div>
+              <ion-list *ngIf="fidePlayers.length > 0 && black_player_fide" class="fide_item">
+                <ion-item (click)="onBlackFidePlayerClick(player)" *ngFor="let player of fidePlayers" class="fide_item">
+                  <div class="fide_item"> {{player.full_name}} </div>
+                </ion-item>
+              </ion-list>
+            </div>
+
+          </div>
+        </ion-col>
+
+        <!--Toggle opts-->
+        <ion-col *ngIf="createMode">
+          <div class="custom_toggle_cnt">
+
+            <!--Cards-->
+            <ion-item *ngIf="createMode" class="toggle_item">
+              <ion-label> Table/Result cards</ion-label>
+              <ion-toggle class="custom_toggle" formControlName="cards"></ion-toggle>
+            </ion-item>
+
+            <!--Fide lookup-->
+            <ion-item *ngIf="createMode" class="toggle_item">
+              <ion-label> Lookup names in FIDE</ion-label>
+              <ion-toggle (ionChange)="onEnableFideChange()" class="custom_toggle"
+                          formControlName="fide_lookup"></ion-toggle>
+            </ion-item>
+
+            <!--Live game-->
+            <ion-item *ngIf="createMode" class="toggle_item">
+              <ion-label> Live Game</ion-label>
+              <ion-toggle (ionChange)="onLiveChange()" class="custom_toggle" formControlName="live"></ion-toggle>
+            </ion-item>
+
+            <div *ngIf="isLiveGame()" class="live_fields_cnt">
+
+              <spinner [message]="'Creating live game, please wait'" [visible]="loadingLiveGame"></spinner>
+
+              <div *ngIf="game.qlid && !loadingLiveGame" class="live_info">
+
+                <!--Hashtag-->
+                <div class="hashtag_cnt">
+                  <ion-label stacked>
+                    <ion-icon name="md-pricetag"></ion-icon>
+                    <span> Hashtag </span>
+                    <span class="optional"> (optional) </span>
+                  </ion-label>
+                  <ion-input [value]="lowercaseHashtag()" formControlName="hashtag" type="text"></ion-input>
+                  <div *ngIf="isHashtagValid()" class="invalid_hashtag">
+                    Invalid hashtag. Must contain only characters, numbers, -, _.
+                  </div>
+                  <div class="common_hashtags">
+                    <div (click)="onTagClick(tag)" *ngFor="let tag of commonHashtags" class="hashtag">
+                      {{tag}}
+                    </div>
+                  </div>
+                </div>
+
+                <!--URLS-->
+                <div class="url_cnt">
+                  <div class="title"> The game can be watched live on the internet</div>
+                  <div class="live_url">
+                    <span> URL direct to this game: </span>
+                    <a (click)="onDirectGameClick()"> app.no/Analysis/?qlid={{game.qlid}} </a>
+                  </div>
+                  <div *ngIf="getCurrentHashtag() && !isHashtagValid()" class="live_url">
+                    <span> URL to games with this hashtag: </span>
+                    <a (click)="onGameHashtagClick()"> app.no/quicklive/{{getCurrentHashtag()}} </a>
+                  </div>
+                  <div class="live_url">
+                    <span> URL to all live quick games: </span>
+                    <a (click)="onAllGamesClick()"> app.no/quicklive/ </a>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </ion-col>
+
+      </ion-row>
+
+      <!--Extra button-->
+      <ion-row class="extra_btn" *ngIf="createMode">
+        <button (click)="onExtraOptionsClick()" color="dark" ion-button> Extra options</button>
+      </ion-row>
+
+      <!--Extra options-->
+      <ion-row *ngIf="extraOptionsVisible || !createMode" class="extra_opts_cnt">
+
+        <!--Event Name-->
+        <ion-item>
+          <ion-label stacked><ion-icon name="md-timer"></ion-icon>Event</ion-label>
+          <ion-input formControlName="event" type="text"></ion-input>
+        </ion-item>
+
+        <!--Site-->
+        <ion-item>
+          <ion-label stacked><ion-icon name="md-pin"></ion-icon>Site</ion-label>
+          <ion-input formControlName="site" type="text"></ion-input>
+        </ion-item>
+
+        <!--Group-->
+        <ion-item>
+          <ion-label stacked><ion-icon name="md-albums"></ion-icon>Group</ion-label>
+          <ion-input formControlName="group" type="text"></ion-input>
+        </ion-item>
+
+        <!--Round-->
+        <ion-item>
+          <ion-label stacked><ion-icon name="md-grid"></ion-icon>Round</ion-label>
+          <ion-input formControlName="round" min="0" type="number"></ion-input>
+        </ion-item>
+
+        <!--White player rating-->
+        <ion-item>
+          <ion-label stacked><ion-icon name="md-podium"></ion-icon> White rating </ion-label>
+          <ion-input formControlName="white_player_rating" min="0" type="number"></ion-input>
+        </ion-item>
+
+        <!--Black player rating-->
+        <ion-item>
+          <ion-label stacked><ion-icon name="md-podium"></ion-icon> Black rating </ion-label>
+          <ion-input formControlName="black_player_rating" min="0" type="number"></ion-input>
+        </ion-item>
+
+        <!--Layout settings-->
+        <div class="settings_cnt" *ngIf="!isScoresheetOnly">
+          <div>
+            <ion-label stacked>
+              <ion-icon name="md-build"></ion-icon>
+              Layout setting
+            </ion-label>
+            <flip-layout [layoutConfig]="layoutConfig"></flip-layout>
+          </div>
+        </div>
+
+      </ion-row>
+
+    </ion-grid>
+
+
+  </form>
+
+</div>

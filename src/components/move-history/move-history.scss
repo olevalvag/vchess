@@ -1,0 +1,73 @@
+move-history {
+
+  .hide_history {
+    visibility: hidden;
+  }
+
+  .moveHistoryContainer {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  .moveHistoryList {
+    height: 100%;
+    padding-bottom: 1.5em;
+  }
+
+  .backMove {
+    color: darkgrey;
+  }
+
+  .currentBackIdx {
+    color: orangered !important;
+  }
+
+  .currentMove {
+    color: orangered !important;
+  }
+
+  ion-item {
+    padding: 0 !important;
+
+    .item-inner {
+      padding: 0 !important;
+
+      ion-label {
+        margin-right: 0px;
+      }
+    }
+  }
+
+  .dash-move {
+    font-weight: 600;
+    font-size: 1.4em;
+  }
+
+  .moveHistoryItem {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    font-size: 2.7vw;
+  }
+
+  .moveNumber {
+    font-weight: bold;
+    text-align: start;
+    margin-right: 1em;
+  }
+
+  .move {
+    text-align: start;
+    width: 100%;
+  }
+
+  .drawn_offer {
+    font-style: italic;
+    font-size: 0.8em;
+    color: #424141;
+    margin-right: 3px;
+    display: block;
+    min-height: 10px;
+  }
+
+}

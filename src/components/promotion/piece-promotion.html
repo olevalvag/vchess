@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Piece Promotion</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <!--Black Section-->
+  <div *ngIf="color == 'b'" class="pieces-cnt">
+    <div (click)="onPieceClick('Q')" class="piece-img black-Q"></div>
+    <div (click)="onPieceClick('R')" class="piece-img black-R"></div>
+    <div (click)="onPieceClick('N')" class="piece-img black-N"></div>
+    <div (click)="onPieceClick('B')" class="piece-img black-B"></div>
+  </div>
+
+  <!--White Section-->
+  <div *ngIf="color == 'w'" class="pieces-cnt">
+    <div (click)="onPieceClick('Q')" class="piece-img white-Q"></div>
+    <div (click)="onPieceClick('R')" class="piece-img white-R"></div>
+    <div (click)="onPieceClick('N')" class="piece-img white-N"></div>
+    <div (click)="onPieceClick('B')" class="piece-img white-B"></div>
+  </div>
+
+
+</ion-content>

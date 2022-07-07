@@ -1,0 +1,48 @@
+tournament-page {
+
+  .tournament_form {
+    .pin_cnt {
+      color: $app_dark;
+      width: 80%;
+      margin: 20px auto;
+    }
+  }
+
+  .pin-cnt {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    ion-icon {
+      font-size: 1.5em;
+    }
+  }
+
+  .pin-code-grid {
+    background: whitesmoke;
+    padding: 0px 5px 15px;
+    width: 70%;
+    border-radius: 20px;
+    margin-top: 0.5em;
+
+    @media screen and (max-width: 850px) {
+      width: 100%;
+    }
+
+    .info-col {
+      text-align: end;
+      padding-right: 2em;
+    }
+
+    .submit-btn-col {
+      text-align: center;
+    }
+
+    ion-item {
+      cursor: text;
+      background: transparent;
+      padding-left: 0px;
+    }
+
+  }
+
+}

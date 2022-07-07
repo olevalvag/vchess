@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title> Clock Template</ion-title>
+    <ion-buttons end>
+      <button (click)="closeModal()" icon-only ion-button>
+        <ion-icon item-right name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item class="manual-cnt">
+    <ion-label>Manual clock settings</ion-label>
+    <ion-toggle [(ngModel)]="manual"></ion-toggle>
+  </ion-item>
+
+  <!--Predefined settings-->
+  <div *ngIf="!manual">
+
+    <!--Blitz-->
+    <ion-card>
+      <ion-card-header class="card-header">
+        3 - 2 Fischer (Blitz)
+      </ion-card-header>
+      <ion-card-content>
+        3 minutes to complete the game, with 2 seconds fischer increment.
+      </ion-card-content>
+      <button (click)="onTemplateClick('blitz')" ion-button> Select</button>
+    </ion-card>
+
+    <!--Rapid-->
+    <ion-card>
+      <ion-card-header class="card-header">
+        12 - 2 Fischer (Rapid)
+      </ion-card-header>
+      <ion-card-content>
+        12 minutes to complete the game, with 2 seconds fischer increment.
+      </ion-card-content>
+      <button (click)="onTemplateClick('rapid')" ion-button> Select</button>
+    </ion-card>
+
+    <!--Common-->
+    <ion-card>
+      <ion-card-header class="card-header">
+        90 - 30 Fischer (Common)
+      </ion-card-header>
+      <ion-card-content>
+        90 minutes to complete the game, with 30 seconds increment fischer.
+      </ion-card-content>
+      <button (click)="onTemplateClick('common')" ion-button> Select</button>
+    </ion-card>
+
+    <!--Classical-->
+    <ion-card>
+      <ion-card-header class="card-header">
+        90/40+30 - 30 Fischer (Classical)
+      </ion-card-header>
+      <ion-card-content>
+        <div><span class="stage"> Stage 1: </span> 90 minutes for 40 moves with 30 seconds fischer increment.</div>
+        <div><span class="stage"> Stage 2: </span> 30 minutes to complete the game, still with 30 seconds fischer
+          increment.
+        </div>
+      </ion-card-content>
+      <button (click)="onTemplateClick('classical')" ion-button> Select</button>
+    </ion-card>
+
+  </div>
+
+  <!--Manual settings-->
+  <div *ngIf="manual">
+    <ion-item>
+      <ion-label><strong> Number of stages: </strong></ion-label>
+      <ion-input  (ionChange)="onStagesChange()" [(ngModel)]="stagesCount"
+                 max="3" min="1" type="number"></ion-input>
+    </ion-item>
+
+    <ion-card *ngFor="let stage of stages; let i=index">
+
+      <ion-card-header class="card-header">
+        Stage: {{i + 1}}
+      </ion-card-header>
+
+      <ion-card-content>
+        <!--Moves-->
+        <ion-item>
+          <ion-label class="opt"> Moves</ion-label>
+          <ion-input [(ngModel)]="stage.moves" min="1" placeholder="Empty for rest of the game"
+                     type="number"></ion-input>
+        </ion-item>
+
+        <!--Time minutes-->
+        <ion-item>
+          <ion-label class="opt">Time in minutes</ion-label>
+          <ion-input [(ngModel)]="stage.timeInMinutes" min="1" placeholder="0" type="number"></ion-input>
+        </ion-item>
+
+        <!--Increment time-->
+        <ion-item>
+          <ion-label class="opt">Increment seconds</ion-label>
+          <ion-input [(ngModel)]="stage.incrementInSeconds" min="1" placeholder="0" type="number"></ion-input>
+        </ion-item>
+
+        <!--Increment type-->
+        <ion-item>
+          <ion-label class="opt">Increment type</ion-label>
+          <ion-select [(ngModel)]="stage.incrementType">
+            <ion-option *ngFor="let item of incrementTypes" [value]="item">{{item}}</ion-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-card-content>
+
+    </ion-card>
+
+    <button (click)="onManualDoneClick()" [disabled]="stagesCount < 1" ion-button> Done</button>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,98 @@
+<ion-header class="app_nav_header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Table Card</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="card-container">
+
+    <!--Spinner-->
+    <spinner [message]="'Waiting for game assignment'" [visible]="requestingGame"></spinner>
+
+    <!--Players info-->
+    <div *ngIf="!requestingGame">
+
+      <!--Tournament Name-->
+      <div *ngIf="game.group_name" class="tournament-name">
+        {{game.group_name}}
+      </div>
+
+      <!--Round / Table-->
+      <div class="round-table">
+        <div>
+          <span> Round: {{game.round}} </span>
+          <span> --- </span>
+          <span> Table: {{game.table}} </span>
+        </div>
+        <div *ngIf="game.WebserverID">
+          <button (click)="onTournamentResultClick()" color="secondary" ion-button small> Tournament Results</button>
+        </div>
+      </div>
+
+      <!--Players info data-->
+      <div class="players-container">
+
+        <!--White player-->
+        <div [style.order]="layoutConfig.swap_sides ? 2 : 1" class="player_card">
+          <player-info [club]="game.white_player_club"
+                       [name]="game.white_player_name"
+                       [nationality]="game.white_player_nationality"
+                       [rating]="game.white_player_rating"
+                       [showReadyBtn]="false"
+                       [status]="whiteStatus">
+          </player-info>
+        </div>
+
+        <!--Black player-->
+        <div [style.order]="layoutConfig.swap_sides ? 1 : 2" class="player_card">
+          <player-info [club]="game.black_player_club"
+                       [name]="game.black_player_name"
+                       [nationality]="game.black_player_nationality"
+                       [rating]="game.black_player_rating"
+                       [showReadyBtn]="false"
+                       [status]="blackStatus">
+          </player-info>
+        </div>
+      </div>
+
+      <!--Results buttons-->
+      <div class="result-btns">
+        <button (click)="onResultClick('white')" [ngClass]="{'selected-btn': isSelectedBtn('white')}"
+                class="white-won"
+                ion-button
+                large>
+          White Won
+        </button>
+        <button (click)="onResultClick('draw')" [ngClass]="{'selected-btn': isSelectedBtn('draw')}"
+                class="draw"
+                ion-button
+                large> Draw
+        </button>
+        <button (click)="onResultClick('black')" [ngClass]="{'selected-btn': isSelectedBtn('black')}"
+                class="black-won"
+                ion-button
+                large> Black Won
+        </button>
+      </div>
+
+      <!--Ongoing game section-->
+      <div class="result-btns">
+        <button (click)="onRemoveResult()" [ngClass]="{'selected-btn': isSelectedBtn()}"
+                color="dark"
+                ion-button> Ongoing game
+        </button>
+      </div>
+
+      <!--Extra Info-->
+      <extra-info [tabletName]="getTabletName()" [viewConfig]="viewConfig"></extra-info>
+
+    </div>
+
+  </div>
+
+</ion-content>

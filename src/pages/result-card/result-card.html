@@ -1,0 +1,135 @@
+<ion-header class="app_nav_header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Result</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="result-card" padding>
+
+  <div class="card-container">
+
+    <!--Spinner-->
+    <spinner [message]="'Waiting for game assignment'" [visible]="requestingGame || !game"></spinner>
+
+    <!--Players info-->
+    <div *ngIf="!requestingGame && game" class="inner-container">
+
+      <!--Tournament Name-->
+      <div *ngIf="game.group_name || game.event" class="tournament-name">
+        {{game.group_name || game.event}}
+      </div>
+
+      <!--Round / Table-->
+      <div class="round-table">
+        <div *ngIf="game.round || game.table">
+          <span *ngIf="game.round"> Round: {{game.round}} </span>
+          <span *ngIf="game.round && game.table"> --- </span>
+          <span *ngIf="game.table"> Table: {{game.table}} </span>
+        </div>
+        <div *ngIf="game.WebserverID">
+          <button (click)="onTournamentResultClick()" color="secondary" ion-button small> Tournament Results</button>
+        </div>
+      </div>
+
+      <!--No internet error-->
+      <div *ngIf="hasPendingPgnRequest()" class="error_cnt">
+        <div class="error_alert"> Do not leave this page. Last pgn with results has not been uploaded to server yet, but
+          will be sent automatically when the connection is back.
+        </div>
+      </div>
+
+      <!--Players info data-->
+      <div class="players-container">
+
+        <!--White player-->
+        <div [style.order]="layoutConfig.swap_sides ? 2 : 1" class="player_card">
+          <player-info [club]="game.white_player_club"
+                       [name]="game.white_player_name"
+                       [nationality]="game.white_player_nationality"
+                       [rating]="game.white_player_rating"
+                       [showReadyBtn]="false"
+                       [status]="whiteStatus">
+          </player-info>
+        </div>
+
+        <!--Black player-->
+        <div [style.order]="layoutConfig.swap_sides ? 1 : 2" class="player_card">
+          <player-info [club]="game.black_player_club"
+                       [name]="game.black_player_name"
+                       [nationality]="game.black_player_nationality"
+                       [rating]="game.black_player_rating"
+                       [showReadyBtn]="false"
+                       [status]="blackStatus">
+          </player-info>
+        </div>
+      </div>
+
+      <!--Game Result-->
+      <div class="game-result-cnt">
+
+        <div class="tournament-name">
+          <div class="game_result"> Game Result: {{showGameResult()}}</div>
+        </div>
+
+        <!--Config settings-->
+        <div class="setting_cnt">
+
+          <div class="button_cnt">
+            <!--Settings-->
+            <button (click)="onSettingsClick()" [ngClass]="{selected_btn: showLayoutSetting}" color="dark" icon-only ion-button>
+              <ion-icon name="md-build"></ion-icon>
+            </button>
+
+            <!--PGN Send-->
+            <button color="dark" icon-only ion-button
+                    *ngIf="showShareBtns"
+                    (click)="onShowSendPgnClick()"
+                    [ngClass]="{selected_btn: showSendPGN}">
+              <ion-icon name="md-share"></ion-icon>
+            </button>
+
+            <!--Edit game-->
+            <button class="edit_game" (click)="onEditGameClick()" color="danger" ion-button> Edit game</button>
+          </div>
+
+          <!--Layout settings section-->
+          <div *ngIf="showLayoutSetting">
+
+            <!--Time Control-->
+            <div *ngIf="showTimeControls">
+              <time-controls [game]="game"></time-controls>
+            </div>
+
+            <!--Go to table card mode-->
+            <div class="table_card_button_cnt">
+              <button (click)="onNavigateTableCardClick()" color="dark" ion-button>
+                Go to Table Card
+              </button>
+            </div>
+
+          </div>
+
+          <!--Send PGN options-->
+          <div *ngIf="showSendPGN">
+            <share-pgn [game]="game"
+                       [layoutConfig]="layoutConfig"
+                       [pgn]="game['pgn_data']"
+                       [showTitle]="false"
+                       [isPopup]="false"></share-pgn>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!--Extra Info-->
+      <extra-info [tabletName]="getTabletName()" [viewConfig]="viewConfig"></extra-info>
+
+    </div>
+
+  </div>
+
+</ion-content>

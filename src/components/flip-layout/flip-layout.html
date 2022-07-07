@@ -1,0 +1,32 @@
+<div class="layout_cnt">
+
+  <div class="flip_swap_cnt">
+    <ion-item>
+      <ion-label> Flip sides</ion-label>
+      <ion-toggle [(ngModel)]="layoutConfig.swap_sides"></ion-toggle>
+    </ion-item>
+    <ion-item *ngIf="false">
+      <ion-label> Flip side-panel</ion-label>
+      <ion-toggle [(ngModel)]="layoutConfig.swap_sections"></ion-toggle>
+    </ion-item>
+  </div>
+
+  <div [ngClass]="{swap_sect: layoutConfig.swap_sections}" class="inner_layout">
+    <div [ngClass]="{swap_side: layoutConfig.swap_sides}" class="inner_layout">
+      <div class="view_cnt">
+
+        <div class="action_section"><span> Scoresheets/Buttons </span></div>
+
+        <div class="chess_section">
+          <div class="white"> Clock</div>
+          <div class="board">
+            <div class="gradient-pattern"></div>
+          </div>
+          <div class="black">Clock</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

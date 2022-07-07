@@ -1,0 +1,102 @@
+tools {
+
+  /*.toolbar {
+    ion-buttons {
+      background-color: $app_whitesmoke;
+      border-radius: 10px;
+      padding: 5px;
+      button {
+        color: black;
+        font-size: 25px;
+      }
+    }
+  }*/
+
+  .section {
+    margin: 10px 0px 30px;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+  }
+
+  .moves-cnt {
+    border: 1px solid black;
+    font-size: 25px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 30px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+
+    button {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+  }
+
+  .clock-cnt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ion-item {
+      font-size: 25px;
+      background-color: transparent;
+
+      .label {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .btn-cnt {
+    text-align: center;
+
+    button {
+      font-size: 2em;
+    }
+
+    .cancel-btn {
+      margin-right: 10vw;
+    }
+
+    .done-btn {
+    }
+  }
+
+  .small-item {
+    width: 80%;
+  }
+
+  .sec-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .minutes_cnt {
+    text-align: center;
+    padding: 20px 10px 10px;
+
+    button {
+      font-size: 20px;
+    }
+  }
+
+  .exit_cnt {
+    text-align: center;
+
+    button {
+      font-size: 20px;
+    }
+  }
+
+  flip-layout {
+    .inner_layout {
+      margin: auto;
+      width: 80%;
+    }
+  }
+
+}

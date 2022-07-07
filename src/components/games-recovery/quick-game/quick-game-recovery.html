@@ -1,0 +1,44 @@
+<ion-card *ngFor="let gameBackup of gamesRecords" class="game_card">
+
+  <ion-fab bottom class="fab_cnt" right>
+    <button class="main_fab" ion-fab>
+      <ion-icon name="md-more"></ion-icon>
+    </button>
+    <ion-fab-list side="left">
+      <button (click)="attemptDelete(gameBackup)" class="delete" ion-fab>
+        <ion-icon name="md-trash"></ion-icon>
+      </button>
+      <button (click)="attemptSaveToFile(gameBackup)" class="archive" ion-fab>
+        <ion-icon name="md-archive"></ion-icon>
+      </button>
+      <button (click)="onGameClick(gameBackup)" class="view" ion-fab>
+        <ion-icon name="md-eye"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+  <ion-card-header class="card_header">
+    <ion-icon name="md-bookmarks"></ion-icon>
+    <div class="title"> {{gameBackup.game.event || '---'}} </div>
+    <div class="dates"> {{getGameDate(gameBackup)}} </div>
+  </ion-card-header>
+
+  <ion-card-content class="card_cnt">
+    <ion-item class="game_cnt">
+      <div class="event_title"> {{gameBackup.game.site || '---'}} </div>
+      <div class="game_info">
+        <div class="table_round"> Round: {{getGameInfo(gameBackup, 'round')}} </div>
+        <div class="time_control"> Mode: {{getTimeControl(gameBackup)}} </div>
+        <div class="players">
+          White: {{getGameInfo(gameBackup, 'white_player_name')}} [ {{getGameInfo(gameBackup, 'white_player_rating')}} ]
+          ---
+          Black: {{getGameInfo(gameBackup, 'black_player_name')}} [ {{getGameInfo(gameBackup, 'black_player_rating')}} ]
+        </div>
+        <div class="table_round"> Live: {{getGameInfo(gameBackup, 'live')}} </div>
+        <div class="table_round"> Cards: {{getGameInfo(gameBackup, 'cards')}} </div>
+      </div>
+    </ion-item>
+  </ion-card-content>
+
+</ion-card>

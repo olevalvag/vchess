@@ -1,0 +1,26 @@
+<ion-header class="app-modal-header">
+  <ion-navbar>
+    <ion-title> Help </ion-title>
+    <ion-buttons end>
+      <button (click)="closeModal()" icon-only ion-button>
+        <ion-icon item-right name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+      <ion-card *ngFor="let card of cards" (click)="onCardClick(card.code)">
+        <ion-card-header>
+          <span>  {{card.title}} </span>
+          <ion-icon [name]="getCardIcon(card.code)"></ion-icon>
+        </ion-card-header>
+        <ion-card-content *ngIf="selectedCard === card.code">
+          <ul>
+            <li *ngFor="let item of card.items"> {{item}} </li>
+          </ul>
+        </ion-card-content>
+      </ion-card>
+
+</ion-content>

@@ -1,0 +1,40 @@
+<div [ngClass]="{hide_history: checkScoresheetOnly()}" class="moveHistoryContainer">
+
+  <div class="moveHistoryList">
+
+    <div *ngFor="let item of scoreSheet; let i = index" class="score_sheet">
+
+      <div class="moveHistoryItem">
+
+        <!-- LINE NUMBER -->
+        <span [attr.name]="item.moveNumber" class="moveNumber">
+          {{item.moveNumber}}.
+        </span>
+
+        <!-- WHITE MOVES -->
+        <span (press)="onMoveHold(item, 'white')"
+              [ngClass]="{'backMove': !isActiveMove(item.whiteMove), 'currentMove': isSelectedMove(item.whiteMove, i)}"
+              class="move">
+          <span class="drawn_offer"> {{hasDrawnOffer(item.whiteMove)}} </span>
+          <span [ngClass]="{'dash-move': isDashMove(item.whiteMove)}">
+            <span *ngIf="isVisibleMove(item.moveNumber, item.whiteMove)"> {{getMovePosition(item.whiteMove)}} </span>
+          </span>
+        </span>
+
+
+        <!-- BLACK MOVES -->
+        <span (press)="onMoveHold(item, 'black')"
+              [ngClass]="{'backMove': !isActiveMove(item.blackMove), 'currentMove': isSelectedMove(item.blackMove, i)}"
+              class="move">
+          <span class="drawn_offer"> {{hasDrawnOffer(item.blackMove)}} </span>
+          <span [ngClass]="{'dash-move': isDashMove(item.blackMove)}">
+            <span *ngIf="isVisibleMove(item.moveNumber, item.blackMove)"> {{getMovePosition(item.blackMove)}} </span>
+          </span>
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

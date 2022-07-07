@@ -1,0 +1,25 @@
+<ion-header class="app_nav_header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <span> App </span>
+      <span *ngIf="!isTestingEnvironment()" class="test_environment"> Configured for test server </span>
+    </ion-title>
+    <div class="version_num"> {{app_version}} </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div (countReach)="onSwitchEnvironment()" ClickCounter class="logo_cnt">
+    <ion-img class="logo" src="assets/app_logo.png"></ion-img>
+  </div>
+
+  <div class="action_btn_cnt">
+    <button (click)="onQuickGameClick()" ion-button large> Quick game</button>
+    <button (click)="onTournamentPageClick()" ion-button large> Connect to Tournament</button>
+  </div>
+
+</ion-content>

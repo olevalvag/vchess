@@ -1,0 +1,39 @@
+home-page {
+
+  .test_environment {
+    font-size: 0.6em;
+    display: block;
+    font-style: italic;
+    color: greenyellow;
+  }
+
+  .version_num {
+    position: absolute;
+    right: 5px;
+    font-size: 9px;
+    bottom: 5px;
+    color: darkgray;
+  }
+
+  .logo_cnt {
+    text-align: center;
+    margin: 20px auto;
+
+    .logo {
+      width: 300px;
+      height: 300px;
+      box-shadow: 0px 0px 20px -2px #394144;
+      border-radius: 20px;
+
+      img {
+        border-radius: 20px;
+      }
+    }
+  }
+
+  .action_btn_cnt {
+    margin: 50px auto;
+    text-align: center;
+  }
+
+}

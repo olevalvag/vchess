@@ -1,0 +1,35 @@
+du-contact {
+
+  .scroll-content {
+    background: #1B1B1B;
+    color: white;
+  }
+
+  .info_grid {
+    width: 80%;
+    margin: auto;
+
+    ion-img {
+      background: transparent;
+
+      img {
+        border-radius: 100px 50px;
+      }
+    }
+
+    strong {
+      font-size: 1.2em;
+    }
+
+    ion-chip {
+      text-decoration: underline;
+      font-size: 1.3em;
+    }
+
+  }
+
+  .description {
+    text-align: justify;
+  }
+
+}

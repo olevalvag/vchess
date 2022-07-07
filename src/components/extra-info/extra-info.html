@@ -1,0 +1,21 @@
+<div>
+
+  <!--Tablet name-->
+  <div *ngIf="viewConfig.tablet">
+    <span *ngIf="viewConfig.showLabels"> Tablet Name: </span>
+    <span> {{getTabletName()}} </span>
+  </div>
+
+  <!--Battery-->
+  <div *ngIf="viewConfig.battery">
+    <span *ngIf="viewConfig.showLabels"> Battery: </span>
+    <span> {{getBatteryLevel()}}% </span>
+  </div>
+
+  <!--Ping-->
+  <div *ngIf="viewConfig.ping">
+    <span *ngIf="viewConfig.showLabels"> Ping: </span>
+    <span> {{getPingValue()}} </span>
+  </div>
+
+</div>

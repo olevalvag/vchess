@@ -1,0 +1,87 @@
+<ion-header class="app-modal-header">
+  <ion-navbar>
+    <ion-title> Main developer</ion-title>
+    <ion-buttons end>
+      <button (click)="closeModal()" icon-only ion-button>
+        <ion-icon item-right name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="info_grid">
+
+    <!--Img row-->
+    <ion-row>
+      <ion-col>
+        <ion-img height="150" src="assets/imgs/lgb.jpg" width="150"></ion-img>
+      </ion-col>
+    </ion-row>
+
+    <!--CV row-->
+    <ion-row>
+      <ion-col>
+        <ion-chip (click)="onCvClick()" color="primary">
+          <ion-icon color="dark" name="md-briefcase"></ion-icon>
+          <ion-label>View Cv</ion-label>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+
+    <!--Name row-->
+    <ion-row>
+      <ion-col align-items-end col-3>
+        <strong> Name: </strong>
+      </ion-col>
+      <ion-col align-items-start>
+        Dev
+      </ion-col>
+    </ion-row>
+
+    <!--Email row-->
+    <ion-row>
+      <ion-col align-items-end col-3>
+        <strong> Email: </strong>
+      </ion-col>
+      <ion-col align-items-start>
+        dev.mail@mail.com
+      </ion-col>
+    </ion-row>
+
+    <!--Skype row-->
+    <ion-row>
+      <ion-col align-items-end col-3>
+        <strong> Skype: </strong>
+      </ion-col>
+      <ion-col align-items-start>
+        -SKYPE-
+      </ion-col>
+    </ion-row>
+
+    <!--Expertise row-->
+    <ion-row>
+      <ion-col align-items-end col-3>
+        <strong> Expertise: </strong>
+      </ion-col>
+      <ion-col align-items-start>
+        Web developer / Hybrid app dev / Django
+      </ion-col>
+    </ion-row>
+
+    <!--Description row-->
+    <ion-row>
+      <ion-col align-items-end col-3>
+        <strong> Description: </strong>
+      </ion-col>
+      <ion-col align-items-start>
+        <div class="description">
+          -----
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

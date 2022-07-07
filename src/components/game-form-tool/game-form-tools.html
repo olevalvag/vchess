@@ -1,0 +1,31 @@
+<ion-header class="app-modal-header">
+  <ion-navbar>
+    <ion-title> Settings</ion-title>
+    <ion-buttons end>
+      <button (click)="closeModal()" icon-only ion-button>
+        <ion-icon item-right name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <share-pgn [game]="game"
+             [layoutConfig]="layoutConfig"
+             [pgn]="pgn"
+             [showTitle]="true"
+             [isPopup]="true"></share-pgn>
+
+  <div class="info_cnt">
+    <h2 class="sub_title"> Info </h2>
+    <div class="data_cnt">
+      <game-info-form (doneClick)="onFormDoneClick($event)"
+                      [createMode]="false"
+                      [game]="game"
+                      [layoutConfig]="layoutConfig">
+      </game-info-form>
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,214 @@
+<ion-content (touchstart)="onBrightnessUpdate()"
+             class="chess-game"
+             fullscreen="true"
+             no-bounce
+             padding
+             scroll="false">
+
+  <div>
+
+    <div [ngClass]="{swap_sections_order: layoutConfig.swap_sections, swap_sides_order: layoutConfig.swap_sides}"
+         class="view-area">
+
+      <!--Board and clocks-->
+      <div [ngStyle]="{'justify-content': 'center'}" class="chessboard-area">
+
+        <!--White clock-->
+        <div *ngIf="ui_config.clocks"
+             [ngClass]="{blitz_clock: isBlitzMode()}"
+             class="white-clock">
+          <clock (clockPressed)="whiteClockPressed()"
+                 [color]="'white'"
+                 [paused]="game_state.clockPaused"
+                 [playerName]="game.white_player_name"
+                 [state]="game_state.white.clockState"
+                 [timeControl]="game.time_control"
+                 [toMove]="game_state.whiteToMove()"></clock>
+        </div>
+
+        <!--Chessboard-->
+        <board (pieceDropped)="pieceDropped($event)"
+               *ngIf="ui_config.chessboard"
+               [clockPaused]="game_state.clockPaused"
+               [layoutConfig]="layoutConfig"
+               [timeControl]="game.time_control"
+               [toMove]="game_state.boardPieceMove()"
+               class="chessboard">
+        </board>
+
+        <!--Blitz info panel-->
+        <blitz-info *ngIf="isBlitzMode()"
+                    [blackCount]="game_state.black.movesCount"
+                    [layoutConfig]="layoutConfig"
+                    [whiteCount]="game_state.white.movesCount"
+                    class="blitz_info">
+        </blitz-info>
+
+        <!--Black clock-->
+        <div *ngIf="ui_config.clocks"
+             [ngClass]="{blitz_clock: isBlitzMode()}"
+             class="black-clock">
+          <clock (clockPressed)="blackClockPressed()"
+                 [color]="'black'"
+                 [paused]="game_state.clockPaused"
+                 [playerName]="game.black_player_name"
+                 [state]="game_state.black.clockState"
+                 [timeControl]="game.time_control"
+                 [toMove]="game_state.blackToMove()"></clock>
+        </div>
+
+      </div>
+
+      <div [ngClass]="{'blitz_actions-area': isBlitzMode()}" class="actions-area">
+
+        <!--White Area-->
+        <div *ngIf="ui_config.scoresheet_white" class="white-list-area">
+          <move-history [backMoves]="game_state.backMoveList"
+                        [layoutConfig]="layoutConfig"
+                        [timeControl]="game.time_control"
+                        color="white"></move-history>
+        </div>
+
+        <!--Buttons & Game info-->
+        <div class="central-area">
+
+          <!--Buttons-->
+          <div class="buttons-cnt">
+
+            <!--Start/Stop clock-->
+            <div *ngIf="ui_config.buttons.start_stop" class="action-bnt">
+              <button (touchstart)="startOrStopClock()" color="dark" icon-only ion-button>
+                <ion-icon [name]="clockIconName"></ion-icon>
+              </button>
+            </div>
+
+            <!--Back move -->
+            <div *ngIf="ui_config.buttons.back" class="action-bnt">
+              <button (touchstart)="backMove()" [disabled]="backDisable" color="dark"
+                      icon-only
+                      ion-button>
+                <ion-icon name="md-skip-backward"></ion-icon>
+              </button>
+            </div>
+
+            <!--Forward move-->
+            <div *ngIf="ui_config.buttons.forward" class="action-bnt">
+              <button (touchstart)="forwardMove()" [disabled]="forwardDisable"
+                      color="dark"
+                      icon-only
+                      ion-button>
+                <ion-icon name="md-skip-forward"></ion-icon>
+              </button>
+            </div>
+
+            <!--Player info button-->
+            <div *ngIf="ui_config.buttons.player_info" class="action-bnt">
+              <button (touchstart)="onPlayerInfoClick()" [disabled]="playerInfoDisable"
+                      color="dark"
+                      icon-only
+                      ion-button>
+                <ion-icon name="md-list"></ion-icon>
+              </button>
+            </div>
+
+            <!--Tools button-->
+            <div *ngIf="ui_config.buttons.tools" class="action-bnt">
+              <button (touchstart)="onToolClick()" [disabled]="toolsDisable"
+                      color="dark"
+                      icon-only
+                      ion-button>
+                <ion-icon name="md-build"></ion-icon>
+              </button>
+            </div>
+
+            <!--Register button-->
+            <div *ngIf="ui_config.buttons.register" class="action-bnt">
+              <button (touchstart)="onRegisterGameClick()" [disabled]="registerGameDisable"
+                      color="dark"
+                      icon-only
+                      ion-button>
+                <ion-icon name="md-trophy"></ion-icon>
+              </button>
+            </div>
+
+            <!--Flip button-->
+            <div *ngIf="ui_config.buttons.flip" class="action-bnt">
+              <button (touchstart)="onFlipGameClick()" [disabled]="flipBtnDisable"
+                      color="dark"
+                      icon-only
+                      ion-button>
+                <ion-icon name="md-git-compare"></ion-icon>
+              </button>
+            </div>
+
+            <!--Brightness button-->
+            <div *ngIf="ui_config.buttons.brightness"
+                 (countReach)="onOffBrightness()"
+                 ClickCounter [clickLimit]="10" class="action-bnt">
+              <button (touchstart)="onBrightnessClick()" [color]="getBrightnessBtnColor()"
+                      icon-only
+                      ion-button>
+                <ion-icon name="md-bulb"></ion-icon>
+              </button>
+            </div>
+
+            <!--Exit button-->
+            <div *ngIf="ui_config.buttons.exit" class="action-bnt">
+              <button (touchstart)="onExitClick()" [disabled]="toolsDisable"
+                      color="danger"
+                      icon-only
+                      ion-button>
+                <ion-icon name="md-arrow-round-back"></ion-icon>
+              </button>
+            </div>
+
+          </div>
+
+          <!--Info-->
+          <div class="game-info">
+            <div *ngIf="ui_config.game_info.title && (game.event || game.group_name)" class="title">
+              {{game.event || game.group_name}}
+            </div>
+
+            <!--Round and table info-->
+            <div *ngIf="ui_config.game_info.round || ui_config.game_info.table" class="info">
+              <span *ngIf="game.round"> Round: {{game.round}} </span>
+              <span *ngIf="game.table && game.round"> --- </span>
+              <span *ngIf="game.table"> Table: {{game.table}} </span>
+            </div>
+
+            <!-- Players names, ratings and clocks-->
+            <div *ngIf="ui_config.game_info.players_names" class="players_names_info">
+              <div>
+                <span> White: {{game.white_player_name}} ({{game.white_player_rating}}) </span>
+              </div>
+
+              <div>
+                <span> Black: {{game.black_player_name}} ({{game.black_player_rating}}) </span>
+              </div>
+
+            </div>
+          </div>
+
+          <!--Ping, battery and Tablet-->
+          <div class="extra_info_cnt">
+            <extra-info [tabletName]="getTabletName()" [viewConfig]="viewConfig"></extra-info>
+          </div>
+
+        </div>
+
+        <!--Black Area-->
+        <div *ngIf="ui_config.scoresheet_black" class="black-list-area">
+          <move-history [backMoves]="game_state.backMoveList"
+                        [layoutConfig]="layoutConfig"
+                        [timeControl]="game.time_control"
+                        color="black"></move-history>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</ion-content>

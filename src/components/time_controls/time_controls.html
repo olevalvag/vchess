@@ -1,0 +1,12 @@
+<div class="time_control_cnt">
+  <ion-label stacked>
+    <ion-icon name="md-stopwatch"></ion-icon>
+    Mode
+  </ion-label>
+  <ion-list [(ngModel)]="game.time_control" radio-group>
+    <ion-item *ngFor="let mode of timeControls">
+      <ion-label>{{mode.label}}</ion-label>
+      <ion-radio (ionSelect)="onTimeControlSelect(mode.label)" [value]="mode.value"></ion-radio>
+    </ion-item>
+  </ion-list>
+</div>

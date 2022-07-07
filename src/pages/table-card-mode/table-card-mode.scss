@@ -1,0 +1,57 @@
+table-card-mode {
+
+  .players-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .player_card {
+      width: 49%;
+    }
+  }
+
+  .tabletName {
+    font-size: 1em;
+  }
+
+  .waiting {
+    font-weight: 500;
+    text-decoration: dotted;
+  }
+
+  .card-container {
+    background-color: whitesmoke;
+  }
+
+  .tournament-name {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 600;
+  }
+
+  .round-table {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  ion-item {
+    background-color: transparent !important;
+  }
+
+  .result-btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1.5em 0em 1em;
+
+    .selected-btn {
+      background-color: #f19a15 !important;
+      color: black !important;
+    }
+  }
+
+
+}
