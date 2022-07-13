@@ -1,0 +1,16 @@
+
+<div class="share_cnt" [ngClass]="{'detached': isPopup}">
+  <h2 class="sub_title" *ngIf="showTitle"> Pgn </h2>
+
+  <div class="btn_cnt">
+    <button (click)="onCopyClipboardClick()" ion-button>
+      <ion-icon item-right name="md-clipboard"></ion-icon>
+      Copy to clipboard
+    </button>
+    <button (click)="onSendPgnEmailClick()" ion-button>
+      <ion-icon item-right name="md-send"></ion-icon>
+      Send via email
+    </button>
+  </div>
+
+</div>

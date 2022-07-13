@@ -1,0 +1,22 @@
+<ion-menu [content]="content" swipeEnabled="false">
+
+  <ion-header class="nav_header">
+    <ion-toolbar>
+      <ion-title (countReach)="showEasterEgg()" ClickCounter> Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="gradient-pattern">
+
+    <ion-list>
+      <button (click)="openPage(p)" *ngFor="let p of pages" ion-item menuClose>
+        {{p.title}}
+      </button>
+    </ion-list>
+
+  </ion-content>
+
+</ion-menu>
+
+
+<ion-nav #content [root]="rootPage" swipeBackEnabled="false"></ion-nav>

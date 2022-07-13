@@ -1,0 +1,47 @@
+tournament-tablet-info {
+
+  .tournament-info {
+    background: whitesmoke;
+    border-radius: 50px;
+    margin: auto;
+    padding: 20px 20px 15px;
+    width: fit-content;
+  }
+
+  table {
+    margin: auto;
+
+  }
+
+  .sub_info {
+    text-align: left;
+
+    ion-icon {
+      color: $app_dark;
+      font-size: 1.8em;
+      margin-right: 0.4em;
+    }
+  }
+
+  .section-title {
+    font-size: 1.8em;
+    font-weight: 500;
+
+  }
+
+  .info-text {
+    font-size: 1.7em;
+    text-align: left;
+    padding-left: 25px;
+  }
+
+  .btn_cnt {
+    text-align: center;
+    margin-top: 1em;
+  }
+
+  .countdown {
+    margin-left: 1em;
+  }
+
+}

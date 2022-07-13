@@ -1,0 +1,32 @@
+quick-game-page {
+
+  .scroll-content {
+    background-color: whitesmoke;
+  }
+
+  .create_btn_cnt {
+    text-align: center;
+    margin-top: 2em;
+
+    button {
+      font-size: 2em;
+    }
+  }
+
+  .clock_settings_cnt {
+    margin-top: 15px;
+
+    .clock_cnt button {
+      margin-left: 50px;
+    }
+  }
+
+  .basic_info_cnt {
+    border: 1px solid #7d7d7d;
+    padding: 1em;
+    background-color: white;
+    margin-top: 1em;
+    margin-bottom: 2em;
+  }
+
+}

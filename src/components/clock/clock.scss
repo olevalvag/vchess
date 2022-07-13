@@ -1,0 +1,93 @@
+clock {
+
+  .grid {
+    font-size: 10px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+
+    ion-row {
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .time {
+      height: 100%;
+      font-weight: bold;
+      color: black;
+      font-size: 17vw;
+      //font-size: calc(30px + (1000 - 300) * ((80vw - 300px) / (1000 - 300)));
+    }
+
+    .name {
+      height: 10%;
+      font-size: 2.5em;
+      color: black;
+      z-index: 5;
+    }
+
+    .missing {
+      visibility: hidden;
+      font-size: 2.7em;
+      color: #065e94;
+      position: relative;
+      z-index: 5;
+      text-overflow: ellipsis;
+      font-weight: 500;
+    }
+  }
+
+  .clock {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: grey;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .registration {
+    visibility: visible !important;
+    opacity: 0;
+    animation: flickerAnimation 8s infinite;
+    animation-delay: 5s;
+    @keyframes flickerAnimation {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
+  .background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+    z-index: 1;
+    filter: alpha(opacity=45);
+    opacity: .45;
+  }
+
+  .toMove {
+    background: orange;
+  }
+
+  .no_time {
+    background: darkred !important;
+  }
+
+}

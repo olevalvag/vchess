@@ -1,0 +1,37 @@
+app-info {
+
+  position: relative;
+
+  .text_cnt {
+    margin: 20px auto;
+    text-align: justify;
+    width: 70%;
+    font-size: 1.3em;
+  }
+
+  .btn_cnt {
+    margin: 10px auto 20px;
+    text-align: center;
+
+    button {
+      font-size: 1em;
+    }
+  }
+
+  .checkbox_cnt {
+    display: flex;
+    justify-content: flex-end;;
+    align-items: flex-end;
+    text-align: end;
+    /*bottom: 0;
+    position: absolute;
+    right: 0;*/
+    padding: 30px;
+
+    ion-checkbox {
+      margin-left: 10px;
+    }
+  }
+
+
+}

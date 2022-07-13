@@ -1,0 +1,8 @@
+{
+  "name": "chessg",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "ionic-angular"
+}

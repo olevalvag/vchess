@@ -1,0 +1,82 @@
+player-info {
+  font-size: 2em;
+  border-radius: 10px;
+
+  .info_cnt {
+    ion-icon {
+      font-size: 0.9em;
+      color: #3a3939;
+      font-weight: 100;
+      margin-right: 10px;
+    }
+  }
+
+  .capitalize {
+    text-transform: capitalize;
+  }
+
+  .player_name {
+    margin: 0.5em auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: 500;
+  }
+
+  .player_info {
+    margin: 0.5em auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .title {
+    font-size: 0.8em;
+    text-decoration: underline;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 1em;
+  }
+
+  .ready_cnt {
+    text-align: center;
+    margin-top: 1em;
+    button {
+      padding: 1em !important;
+    }
+  }
+
+  .white_cnt {
+    border: 1px solid #595959;
+    background-color: white;
+    padding: 5px;
+    float: left;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .black_cnt {
+    //background-color: white;
+    border: 1px solid #595959;
+    float: right;
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+
+    background-color: #5d5d5d;
+    color: white;
+
+    ion-icon {
+      color: white;
+    }
+  }
+
+  // ------------------------------------------------- FOR SMALL SCREENS!!
+  @media screen and (orientation: landscape) and (max-width: 1300px) {
+    .player_name {margin: 0.2em auto;}
+    .player_info {margin: 0.2em auto;}
+    .title { margin-bottom: 0.7em;}
+    .ready_cnt {
+      margin-top: 0.6em;
+      button {padding: 0.6em !important; font-size: 0.7em;}
+    }
+  }
+}

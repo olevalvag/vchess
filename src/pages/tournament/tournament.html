@@ -1,0 +1,69 @@
+<ion-header class="app_nav_header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Connect to Tournament</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!--STEPS-->
+  <connection-list #connectionList
+                   (gameEvent)="onGameEvent($event)"
+                   (internetAbort)="onInternetAbort()"
+                   (tabletEvent)="onTabletEvent($event)"
+                   (tournamentEvent)="onTournamentEvent($event)"
+                   [pin]="getCurrentPin()"
+                   [steps]="steps">
+  </connection-list>
+
+
+  <!--Enter pin code-->
+  <ion-grid *ngIf="isPinInputVisible()" class="pin-code-grid">
+
+    <ion-row align-items-center *ngIf="!hasPidCode()">
+      <ion-col align-self-end class="info-col"> Enter valid PIN code to connect to a tournament.</ion-col>
+      <!--Connect input PIN-->
+      <ion-col align-self-center col-6>
+        <form [formGroup]="form">
+          <div class="pin-cnt">
+            <ion-item>
+              <ion-label floating> PIN code</ion-label>
+              <ion-input #pinInput formControlName="pin"
+                         numbersOnly blockCopyPaste [type]="viewPIN ? 'text' : 'password'"></ion-input>
+            </ion-item>
+            <ion-icon (click)="onTogglePidVisibility()" *ngIf="!pidCode"
+                      [name]="viewPIN ? 'md-eye-off' : 'md-eye'"></ion-icon>
+          </div>
+        </form>
+      </ion-col>
+      <!--Connect button-->
+      <ion-col align-self-end class="submit-btn-col">
+        <button (click)="onPinClick()" [disabled]="!getCurrentPin()" ion-button> Connect</button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="hasPidCode()">
+      <ion-col align-self-end class="info-col"> PIN code obtained from PID.</ion-col>
+      <!--PIN button-->
+      <ion-col align-self-end class="submit-btn-col">
+        <button (click)="onPidConnectClick()" ion-button> Connect</button>
+        <button (click)="onPidConnectAbortClick()" ion-button color="third"> Change</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+  <!--  Tablet registered and continue btn-->
+  <div *ngIf="showContinueCountdown() && !steps.game.visible" class="tournament_info">
+    <tournament-tablet-info (continueClick)="startGameStep()"
+                            [continueCountdown]="showContinueCountdown()"
+                            [tablet]="steps.tablet.data"
+                            [tournament]="steps.tournament.data">
+    </tournament-tablet-info>
+  </div>
+
+</ion-content>

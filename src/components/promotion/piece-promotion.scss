@@ -1,0 +1,67 @@
+piece-promotion {
+
+  .scroll-content {
+    background-color: whitesmoke;
+  }
+
+  .toolbar-title {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .toolbar-background {
+    background-color: $app_orange;
+  }
+
+  .pieces-cnt {
+    margin: auto;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+  }
+
+  .piece-img {
+    background-size: 100% !important;
+    border-radius: 20px;
+    margin-right: 10px;
+    max-width: 100px;
+    max-height: 100px;
+    height: 80px;
+    width: 80px;
+  }
+
+  .black-Q {
+    background: url('../assets/chessground_mobile/images/pieces/merida/bQ.svg');
+  }
+
+  .black-R {
+    background: url('../assets/chessground_mobile/images/pieces/merida/bR.svg');
+  }
+
+  .black-B {
+    background: url('../assets/chessground_mobile/images/pieces/merida/bB.svg');
+  }
+
+  .black-N {
+    background: url('../assets/chessground_mobile/images/pieces/merida/bN.svg');
+  }
+
+  .white-Q {
+    background: url('../assets/chessground_mobile/images/pieces/merida/wQ.svg');
+  }
+
+  .white-R {
+    background: url('../assets/chessground_mobile/images/pieces/merida/wR.svg');
+  }
+
+  .white-B {
+    background: url('../assets/chessground_mobile/images/pieces/merida/wB.svg');
+  }
+
+  .white-N {
+    background: url('../assets/chessground_mobile/images/pieces/merida/wN.svg');
+  }
+
+}

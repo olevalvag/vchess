@@ -1,0 +1,51 @@
+
+connection-list {
+
+  .error-row {
+    text-align: center;
+  }
+
+  .step-name {
+    font-weight: 500;
+    font-size: 1.3em;
+    text-align: end;
+  }
+
+  .success-icon {
+    font-size: 1.5em;
+    color: forestgreen;
+  }
+
+  .error-icon {
+    font-size: 1.2em;
+    color: $app_red;
+  }
+
+  .pending-icon {
+    font-size: 1.2em;
+    color: orange;
+  }
+
+  .error-message {
+    font-style: italic;
+    font-weight: 500;
+    color: $app_red;
+    width: 50%;
+    margin: auto;
+  }
+
+  .request-error-msg {
+    font-style: italic;
+    font-size: 0.7em;
+    color: orangered;
+    margin: 0.8em 0em;
+  }
+
+  .tablet-name {
+    font-weight: 300;
+    font-size: 1em;
+    text-align: end;
+    margin-top: 0.4em;
+  }
+
+}

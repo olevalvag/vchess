@@ -1,0 +1,92 @@
+<ion-header class="app-modal-header">
+  <ion-navbar>
+    <ion-title> Tools</ion-title>
+    <ion-buttons end>
+      <button (click)="closeModal()" icon-only ion-button>
+        <ion-icon item-right name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!--White section-->
+  <div *ngIf="ui_config.tool_popup.adjust_white_clock" class="section">
+    <div class="sec-title"> White Clock</div>
+    <div class="clock-cnt">
+      <ion-item class="small-item">
+        <ion-label>Hour</ion-label>
+        <ion-select [(ngModel)]="whiteData.hours">
+          <ion-option *ngFor="let num of [] | range:5" [value]="num">{{num}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Minutes</ion-label>
+        <ion-select [(ngModel)]="whiteData.minutes">
+          <ion-option *ngFor="let num of [] | range:60" [value]="num">{{num}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Seconds</ion-label>
+        <ion-select [(ngModel)]="whiteData.seconds">
+          <ion-option *ngFor="let num of [] | range:60" [value]="num">{{num}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div class="minutes_cnt">
+      <button (click)="on1MinuteClick('white')" ion-button> Add 1 minute</button>
+      <button (click)="on2MinuteClick('white')" ion-button> Add 2 minutes</button>
+    </div>
+  </div>
+
+  <!--Black section-->
+  <div *ngIf="ui_config.tool_popup.adjust_black_clock" class="section">
+    <div class="sec-title"> Black Clock</div>
+    <div class="clock-cnt">
+      <ion-item class="small-item">
+        <ion-label>Hour</ion-label>
+        <ion-select [(ngModel)]="blackData.hours">
+          <ion-option *ngFor="let num of [] | range:5" [value]="num">{{num}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Minutes</ion-label>
+        <ion-select [(ngModel)]="blackData.minutes">
+          <ion-option *ngFor="let num of [] | range:60" [value]="num">{{num}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Seconds</ion-label>
+        <ion-select [(ngModel)]="blackData.seconds">
+          <ion-option *ngFor="let num of [] | range:60" [value]="num">{{num}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div class="minutes_cnt">
+      <button (click)="on1MinuteClick('black')" ion-button> Add 1 minute</button>
+      <button (click)="on2MinuteClick('black')" ion-button> Add 2 minutes</button>
+    </div>
+  </div>
+
+  <!--Remove half moves-->
+  <div class="moves-cnt">
+    <div *ngIf="ui_config.tool_popup.remove_half_moves">
+      <div> Total unregistered half moves: <span> {{whiteData.moves + blackData.moves}} </span></div>
+      <button (click)="onRemoveMoveClick()" [disabled]="blackData.moves + whiteData.moves == 0" ion-button> Remove 1
+        half move
+      </button>
+    </div>
+    <div *ngIf="ui_config.tool_popup.exit" class="exit_cnt">
+      <button (click)="onExitClick()" color="danger" ion-button> Exit game</button>
+    </div>
+  </div>
+
+  <!--Layout config settings-->
+  <div *ngIf="ui_config.tool_popup.change_layout">
+    <flip-layout [layoutConfig]="layoutConfig"></flip-layout>
+  </div>
+
+</ion-content>

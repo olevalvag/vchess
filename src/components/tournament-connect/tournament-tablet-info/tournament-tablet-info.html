@@ -1,0 +1,62 @@
+<div class="tournament_info">
+
+  <div class="tournament-info">
+    <table>
+      <tr>
+        <td class="sub_info">
+          <ion-icon name="md-timer"></ion-icon>
+          <span class="section-title"> Tournament: </span>
+        </td>
+        <td class="info-text"> {{tournament.name}} </td>
+      </tr>
+      <tr>
+        <td class="sub_info">
+          <ion-icon name="md-calendar"></ion-icon>
+          <span class="section-title"> Start date: </span>
+        </td>
+        <td class="info-text"> {{tournament.start_date}} </td>
+      </tr>
+      <tr>
+        <td class="sub_info">
+          <ion-icon name="md-calendar"></ion-icon>
+          <span class="section-title"> End date: </span>
+        </td>
+        <td class="info-text"> {{tournament.end_date}} </td>
+      </tr>
+      <tr>
+        <td class="sub_info">
+          <ion-icon name="md-pin"></ion-icon>
+          <span class="section-title"> Site: </span>
+        </td>
+        <td class="info-text"> {{tournament.site}} </td>
+      </tr>
+      <tr>
+        <td class="sub_info">
+          <ion-icon name="md-person"></ion-icon>
+          <span class="section-title"> Arbiter: </span>
+        </td>
+        <td class="info-text"> {{tournament.arbiter}} </td>
+      </tr>
+      <tr>
+        <td class="sub_info">
+          <ion-icon name="md-tablet-portrait"></ion-icon>
+          <span class="section-title"> Tablet: </span>
+        </td>
+        <td class="info-text"> {{tablet.tablet_name}} </td>
+      </tr>
+    </table>
+
+    <div class="btn_cnt">
+      <button (click)="onContinueClick()" ion-button large>
+        <span> Continue </span>
+        <span *ngIf="isTimerActive()" class="countdown"> {{continueCount}} </span>
+      </button>
+      <button (click)="onCancelClick()" *ngIf="isTimerActive()" color="danger" ion-button large>
+        Cancel auto count
+      </button>
+    </div>
+
+  </div>
+
+
+</div>

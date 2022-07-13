@@ -1,0 +1,25 @@
+share-pgn {
+
+  .detached {
+    background: whitesmoke;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 30px;
+  }
+
+  .extra {
+    margin-top: 1.2em;
+  }
+
+  .share_cnt {
+    .btn_cnt {
+      text-align: center;
+      padding: 10px 30px 15px 30px;
+
+      ion-icon {
+        margin-right: 10px;
+      }
+    }
+  }
+
+}

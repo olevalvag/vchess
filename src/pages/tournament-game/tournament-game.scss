@@ -1,0 +1,13 @@
+tournament-game, tournament-game-scoresheet {
+
+  .game_mask {
+    background-color: black;
+    z-index: 5000;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: none;
+  }
+
+}
+

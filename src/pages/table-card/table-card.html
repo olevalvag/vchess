@@ -1,0 +1,118 @@
+<ion-header class="app_nav_header">
+  <ion-navbar #navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Table Card</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="table-card" padding>
+
+  <div class="card-container">
+
+    <!--Spinner-->
+    <spinner [message]="'Waiting for game assignment'" [visible]="requestingGame"></spinner>
+
+    <!--Players info-->
+    <div *ngIf="!requestingGame" class="inner-container">
+
+      <!--Tournament Name-->
+      <div *ngIf="game.group_name || game.event" class="tournament-name">
+        {{game.group_name || game.event}}
+      </div>
+
+      <!--Round / Table-->
+      <div class="round-table">
+        <div *ngIf="game.round || game.table">
+          <span *ngIf="game.round"> Round: {{game.round}} </span>
+          <span *ngIf="game.round && game.table"> --- </span>
+          <span *ngIf="game.table"> Table: {{game.table}} </span>
+        </div>
+        <div *ngIf="game.WebserverID">
+          <button (click)="onTournamentResultClick()" color="secondary" ion-button small> Tournament Results</button>
+        </div>
+      </div>
+
+      <!--Error message-->
+      <div *ngIf="!hasClockTemplate()" class="error_cnt">
+        <div class="error_alert"> Game missing clock template. Using 90 minutes + 30 seconds per move default
+          settings.
+        </div>
+      </div>
+
+      <!--Players info data-->
+      <div class="players-container">
+
+        <!--White player-->
+        <div [style.order]="layoutConfig.swap_sides ? 2 : 1" class="player_card">
+          <player-info (readyChange)="onPlayerReadyChange($event)"
+                       [club]="game.white_player_club"
+                       [name]="game.white_player_name"
+                       [nationality]="game.white_player_nationality"
+                       [rating]="game.white_player_rating"
+                       [showReadyBtn]="!isScoresheetOnlyMode"
+                       [status]="whiteStatus">
+          </player-info>
+        </div>
+
+        <!--Black player-->
+        <div [style.order]="layoutConfig.swap_sides ? 1 : 2" class="player_card">
+          <player-info (readyChange)="onPlayerReadyChange($event)"
+                       [club]="game.black_player_club"
+                       [name]="game.black_player_name"
+                       [nationality]="game.black_player_nationality"
+                       [rating]="game.black_player_rating"
+                       [showReadyBtn]="!isScoresheetOnlyMode"
+                       [status]="blackStatus">
+          </player-info>
+        </div>
+      </div>
+
+      <!--Ready btn-->
+      <div *ngIf="isScoresheetOnlyMode" class="single_player_btn">
+        <button (click)="onSinglePlayerReadyClick()" large ion-button> Player ready</button>
+      </div>
+
+      <!--Config settings-->
+      <div class="setting_cnt">
+
+        <div class="button_cnt">
+
+          <!--Show extra settings button-->
+          <button (click)="onSettingsClick()" color="dark" icon-only ion-button small>
+            <ion-icon name="md-build"></ion-icon>
+          </button>
+
+          <!--Switch sides button-->
+          <button (click)="onSwitchSidesClick()" [ngClass]="{flip_sides: layoutConfig.swap_sides}"
+                  color="dark"
+                  icon-only
+                  ion-button
+                  small>
+            <ion-icon name="md-contrast"></ion-icon>
+          </button>
+        </div>
+
+        <!--Extra settings section-->
+        <div *ngIf="showLayoutSetting">
+
+          <!--Time Controls-->
+          <div *ngIf="showTimeControls">
+            <time-controls [game]="game"></time-controls>
+          </div>
+
+          <!--Layout settings-->
+          <flip-layout [layoutConfig]="layoutConfig"></flip-layout>
+        </div>
+
+      </div>
+
+      <!--Extra Info-->
+      <extra-info [tabletName]="getTabletName()" [viewConfig]="viewConfig"></extra-info>
+
+    </div>
+
+  </div>
+
+</ion-content>

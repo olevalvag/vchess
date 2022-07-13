@@ -1,0 +1,26 @@
+<div [ngClass]="{white_cnt: status.color == 'white', black_cnt: status.color == 'black'}">
+  <div class="info_cnt">
+    <div class="title capitalize"> {{status.color}} Player</div>
+    <div class="player_name">
+      <ion-icon name="md-contact"></ion-icon>
+      {{displayInfo(name)}} </div>
+    <div class="player_info">
+      <ion-icon name="ios-contacts"></ion-icon>
+      {{displayInfo(club)}} </div>
+    <div class="player_info">
+      <ion-icon name="md-flag"></ion-icon>
+      {{displayInfo(nationality)}} </div>
+    <div class="player_info">
+      <ion-icon name="md-podium"></ion-icon>
+      {{displayInfo(rating)}} </div>
+  </div>
+  <div class="ready_cnt" *ngIf="showReadyBtn">
+    <button (click)="onReadyClick()"
+            [color]="isPlayerReady()"
+            class="capitalize"
+            ion-button>
+      {{status.color}} player ready
+    </button>
+  </div>
+</div>
+

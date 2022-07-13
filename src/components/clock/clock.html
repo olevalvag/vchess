@@ -1,0 +1,19 @@
+<div (touchstart)="onClick()" [ngClass]="{'toMove': toMove, 'no_time': checkNoTime()}"
+     class="clock"
+     tappable>
+
+  <ion-grid class="grid">
+    <ion-row class="name"> {{playerName}}  </ion-row>
+    <ion-row class="time"> {{getCurrentClockTime()}} </ion-row>
+    <ion-row *ngIf="checkTimeControl()"
+             [ngClass]="{registration: missingMoves}"
+             class="missing">
+      Please register move
+    </ion-row>
+  </ion-grid>
+
+  <div [ngClass]="{'background': isClockDisabled()}"></div>
+
+</div>
+
+

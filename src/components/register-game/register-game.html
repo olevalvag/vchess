@@ -1,0 +1,65 @@
+<ion-header class="app-modal-header">
+  <ion-navbar>
+    <ion-title> Register Results</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="btns-cnt">
+    <button (click)="onResultClick('white')" [ngClass]="{'selected-btn': isSelectedBtn('white')}" class="white-won"
+            color="dark"
+            ion-button
+            large>
+      White Won
+    </button>
+    <button (click)="onResultClick('draw')" [ngClass]="{'selected-btn': isSelectedBtn('draw')}" class="draw"
+            color="dark"
+            ion-button
+            large> Draw
+    </button>
+    <button (click)="onResultClick('black')" [ngClass]="{'selected-btn': isSelectedBtn('black')}" class="black-won"
+            color="dark"
+            ion-button
+            large> Black Won
+    </button>
+  </div>
+
+  <!--Remove result-->
+  <div class="remove-cnt">
+    <button (click)="onRemoveResult()" [ngClass]="{'selected-btn': isSelectedBtn()}" color="dark"
+            ion-button large> Ongoing game
+    </button>
+  </div>
+
+  <div *ngIf="gameResult" class="result-info">
+    Selected game result: {{gameResult}}
+  </div>
+
+  <div *ngIf="false">
+    <!--White Pad-->
+    <div>
+      <div> White Player's Signature</div>
+      <signature-pad (onBeginEvent)="drawStart()"
+                     (onEndEvent)="drawWhiteComplete()"
+                     [options]="signaturePadOptions1"
+                     name="white"></signature-pad>
+    </div>
+    <!--Black Pad-->
+    <div>
+      <div> Black Player's Signature</div>
+      <signature-pad (onBeginEvent)="drawStart()"
+                     (onEndEvent)="drawBlackComplete()"
+                     [options]="signaturePadOptions2"
+                     name="black"></signature-pad>
+    </div>
+  </div>
+
+  <!--Buttons section-->
+  <div class="btn-cnt">
+    <button (click)="closeModal()" color="danger" ion-button large large> Cancel</button>
+    <button (click)="onSubmitClick()" [disabled]="!isSubmitDisable()" color="secondary" ion-button large large> Submit
+    </button>
+  </div>
+
+</ion-content>

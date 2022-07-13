@@ -1,0 +1,123 @@
+$setting_bg: #cecece;
+
+flip-layout {
+
+  .layout_cnt {
+    width: 100%;
+    margin: auto;
+  }
+
+  .flip_swap_cnt {
+    margin: auto;
+    font-size: 25px;
+    text-align: center;
+    padding: 10px;
+    background-color: transparent;
+
+    ion-label {
+      font-size: 25px;
+    }
+
+    ion-item {
+      background-color: transparent;
+
+      .item-inner {
+        border: none !important;
+      }
+    }
+  }
+
+  .view_cnt {
+    transition: all 0.5s ease;
+    margin: auto;
+    height: 300px;
+    border: 1px solid black;
+    padding: 5px;
+    background: $setting_bg;
+    position: relative;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+
+    .clock {
+      writing-mode: vertical-rl;
+      width: 20%;
+      border: 5px solid $setting_bg;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .chess_section {
+      order: 2;
+      display: flex;
+      height: 75%;
+    }
+
+    .action_section {
+      order: 1;
+      background: $app_blue;
+      height: 25%;
+      border: 5px solid $setting_bg;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .white {
+      @extend .clock;
+      order: 1;
+      background: white;
+      color: black;
+    }
+
+    .black {
+      @extend .clock;
+      order: 3;
+      color: white;
+      background: black;
+      transform: rotate(180deg);
+    }
+
+    .board {
+      order: 2;
+      width: 60%;
+      background: orange;
+      position: relative;
+      border: 5px solid $setting_bg;
+
+      .gradient-pattern {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .inner_layout {
+    transition: all 0.5s ease;
+    height: 100%;
+  }
+
+  .swap_sect {
+    .action_section {
+      order: 2 !important;
+    }
+
+    .chess_section {
+      order: 1 !important;
+    }
+  }
+
+  .swap_side {
+    .white {
+      color: white;
+      background-color: black;
+    }
+
+    .black {
+      color: black;
+      background-color: white;
+    }
+  }
+
+}

@@ -1,0 +1,86 @@
+<ion-header class="app_nav_header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title (countReach)="onDeleteAll()" ClickCounter> Recovery</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="options_cnt">
+
+    <div class="local_toggle_cnt">
+      <ion-icon name="md-archive">
+        <span> View disk files </span>
+      </ion-icon>
+      <ion-toggle (ionChange)="showDiskMode()" [(ngModel)]="diskMode"></ion-toggle>
+    </div>
+
+    <div *ngIf="!diskMode" class="total_count">
+      <strong> Storage usage: </strong>
+      {{tournamentStorageCount + quickGameCount}} / 500
+    </div>
+
+  </div>
+
+  <!-- /////////////////////////// Local storage /////////////////////////// -->
+  <div *ngIf="!diskMode">
+
+    <div>
+      <ion-searchbar [(ngModel)]="searchTxt" [showCancelButton]="true"></ion-searchbar>
+    </div>
+
+    <!--/////// Tournaments  ////// -->
+    <div class="divider_title"> Tournament games</div>
+    <tournament-recovery (recordCount)="updateTournamentCount($event)"
+                         [searchTxt]="searchTxt">
+    </tournament-recovery>
+
+    <!--Quick Game-->
+    <div class="divider_title"> Quick games</div>
+    <quick-game-recovery (recordCount)="updateQuickGameCount($event)"
+                         [searchTxt]="searchTxt">
+    </quick-game-recovery>
+
+  </div>
+
+  <!-- /////////////////////// Disk storage /////////////////-->
+  <div *ngIf="diskMode">
+
+    <!--Tournaments-->
+    <div class="divider_title"> Tournament games</div>
+    <ion-card *ngFor="let gameBackup of tournamentsRecords" class="game_card">
+      <ion-card-header class="card-header">
+        <div>
+          <ion-icon name="md-document"></ion-icon>
+        </div>
+        <div class="title"> {{gameBackup.tournament.name}} </div>
+        <div class="dates"> {{gameBackup.tournament.start_date}} -- {{gameBackup.tournament.end_date}} </div>
+      </ion-card-header>
+      <ion-card-content>
+        <button (click)="moveTournamentStorage(gameBackup)" ion-button> Move to storage</button>
+      </ion-card-content>
+    </ion-card>
+
+
+    <!--Quick Game-->
+    <div class="divider_title"> Quick games</div>
+    <ion-card *ngFor="let gameBackup of quickGameRecords" class="game_card">
+      <ion-card-header class="card-header">
+        <div>
+          <ion-icon name="md-document"></ion-icon>
+        </div>
+        <div class="title"> {{gameBackup.game.event}} </div>
+        <div class="dates"> {{viewDate(gameBackup.date_timestamp)}} </div>
+      </ion-card-header>
+      <ion-card-content>
+        <button (click)="moveQuickGameStorage(gameBackup)" ion-button> Move to storage</button>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+
+</ion-content>

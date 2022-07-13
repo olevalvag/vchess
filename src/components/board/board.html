@@ -1,0 +1,68 @@
+<div [ngClass]="{
+          'scoresheet-only': checkScoresheetOnly(),
+          'scoresheet-white': checkScoresheetGame('white'),
+          'scoresheet-black': checkScoresheetGame('black'),
+          'swap_sides': layoutConfig.swap_sides || false }"
+     class="boardContainer"
+     id="board-container">
+
+  <spinner [message]="'Rendering board'" [visible]="renderingBoard"></spinner>
+
+  <div [ngClass]="{swap_sides: layoutConfig.swap_sides || false}" class="boardContent">
+
+    <!--Container only appears if correctig moves while clock paused and no more moves available-->
+    <!--<div (click)="onNoMovesClick()" *ngIf="checkAvailableMoves()" class="block_moves"></div>-->
+
+    <!--Coordinates chars top-->
+    <div class="chars_top_cnt" *ngIf="!isScoresheetOnly">
+      <div> A</div>
+      <div> B</div>
+      <div> C</div>
+      <div> D</div>
+      <div> E</div>
+      <div> F</div>
+      <div> G</div>
+      <div> H</div>
+    </div>
+
+    <!--Coordinates numbers top-->
+    <div class="rank_top_cnt" [ngClass]="{'sso_rank': isScoresheetOnly && !layoutConfig.swap_sides}">
+      <div> 8</div>
+      <div> 7</div>
+      <div> 6</div>
+      <div> 5</div>
+      <div> 4</div>
+      <div> 3</div>
+      <div> 2</div>
+      <div> 1</div>
+    </div>
+
+    <!--Coordinates chars bottom-->
+    <div class="chars_bottom_cnt">
+      <div> H</div>
+      <div> G</div>
+      <div> F</div>
+      <div> E</div>
+      <div> D</div>
+      <div> C</div>
+      <div> B</div>
+      <div> A</div>
+    </div>
+
+    <!--Coordinates numbers bottom-->
+    <div class="rank_bottom_cnt" *ngIf="!isScoresheetOnly">
+      <div> 1</div>
+      <div> 2</div>
+      <div> 3</div>
+      <div> 4</div>
+      <div> 5</div>
+      <div> 6</div>
+      <div> 7</div>
+      <div> 8</div>
+    </div>
+
+    <!--Chessboard-->
+    <div #board class="boardElement merida blue coordinates" id="board"></div>
+
+  </div>
+</div>

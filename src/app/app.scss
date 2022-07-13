@@ -1,0 +1,792 @@
+// http://ionicframework.com/docs/theming/
+
+$gray_square: rgba(0, 0, 0, 0.05);
+
+.nav_header {
+  ion-toolbar {
+    .toolbar-background {
+      background: $app_dark;
+    }
+  }
+
+  ion-title {
+    background-color: $app_dark;
+
+    .toolbar-title {
+      text-align: center;
+      font-size: 1.5em;
+      color: whitesmoke;
+    }
+  }
+}
+
+.gradient-pattern {
+  box-sizing: content-box;
+  border: none;
+  text-overflow: clip;
+  background: linear-gradient(45deg, $gray_square 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, $gray_square 75%, $gray_square 0),
+  linear-gradient(45deg, $gray_square 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, $gray_square 75%, $gray_square 0), rgb(255, 255, 255);
+  background-position: 0 0, 35px 35px;
+  background-origin: padding-box;
+  background-clip: border-box;
+  background-size: 70px 70px;
+
+  button[menuClose] {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: black;
+    font-size: 2em;
+    font-weight: 600;
+  }
+}
+
+///////////////////////////////////// GENERAL /////////////////////
+
+.app_nav_header {
+  ion-navbar {
+    .toolbar-background {
+      background: $app_red !important;
+    }
+
+    .back-button {
+      color: white;
+
+      .back-button-text {
+        display: none;
+      }
+    }
+
+    button[menutoggle] {
+      .button-inner ion-icon {
+        font-size: 4rem;
+        color: white;
+        line-height: 5px;
+      }
+    }
+  }
+
+  ion-title {
+    background-color: $app_red;
+
+    .toolbar-title {
+      text-align: center;
+      font-size: 2em;
+      color: whitesmoke;
+    }
+  }
+}
+
+
+////////////////// ALERT -------------------
+
+.select-alert {
+  .alert-head {
+    background-color: orange;
+    border-bottom: 2px solid black;
+  }
+
+  .alert-title {
+    font-size: 1.5em;
+  }
+
+  .alert-radio-group {
+    font-size: 2em;
+    button {text-align: center;}
+  }
+
+  .alert-radio-label {
+    color: #3a3939 !important;
+  }
+
+  .alert-button-group {
+    margin: 10px;
+    text-align: center;
+
+    button {
+      font-size: 1.3em;
+    }
+  }
+}
+
+.app-alert {
+
+  font-size: calc(15px + (30 - 15) * ((100vw - 300px) / (1600 - 300)));
+
+  .alert-head {
+    padding: 10px;
+    border-bottom: 1px solid black;
+    background-color: $app_white !important;
+  }
+
+  .alert-wrapper {
+    max-width: 70vw;
+  }
+
+  .alert-title {
+    text-align: center;
+    font-size: 1.4em;
+    background-color: $app_white !important;
+  }
+
+  .alert-message {
+    margin-top: 15px;
+    font-size: 1.2em;
+  }
+
+  .alert-input-wrapper {
+    font-size: 2.3em;
+    input {
+      border: 0.5px solid #454444;
+      margin: 0px;
+    }
+  }
+
+  .alert-button-group {
+    justify-content: center;
+    padding: 15px 5px;
+    width: 100%;
+
+    button {
+      font-size: calc(20px + (45 - 20) * ((100vw - 300px) / (1600 - 300)));
+      margin: auto;
+      border: none;
+      width: 47%;
+      height: 3em;
+      //font-size: 1.5em;
+      color: white;
+      line-height: 2em;
+      .button-inner {text-align: center; display: block;}
+    }
+  }
+
+  .ok_btn {
+    background: map-get($colors, secondary);
+  }
+
+  .cancel_btn {
+    background: map-get($colors, danger);
+  }
+
+}
+
+.overwrite-alert {
+  .alert-wrapper {
+    transform: rotate(90deg) !important;
+  }
+}
+
+.overwrite-alert-fliped {
+  .alert-wrapper {
+    transform: rotate(-90deg) !important;
+  }
+}
+
+.wrong_auth_code {
+  .alert-head {
+    color: red;
+  }
+}
+
+.rotate_draw_popup .alert-wrapper {
+  transform: rotate(180deg) !important;
+}
+
+.popover-md {
+    .popover-content { width: 80%;}
+}
+
+///////////////////// MODAL ----------
+
+.overwrite_modal_bg {
+  ion-backdrop {
+    opacity: 0.98 !important;
+    background-color: slategray;
+  }
+}
+
+.app-modal {
+  .modal-wrapper {
+    left: calc(0%);
+    top: calc(0%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.app-modal-header {
+
+  ion-navbar {
+    min-height: 60px;
+  }
+
+  .fixed-content {
+    margin-top: 70px;
+  }
+
+  .scroll-content {
+    margin-top: 70px;
+  }
+
+  .toolbar {
+    ion-buttons {
+      background-color: $app_white;
+      border-radius: 10px;
+      padding: 5px;
+
+      button {
+        color: black;
+        font-size: 25px;
+      }
+    }
+  }
+
+  .toolbar-background {
+    background-color: $app_red;
+    border-bottom: 5px solid black;
+  }
+
+  .toolbar-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 2.5em;
+    color: white;
+  }
+}
+
+
+/////////////////////// CHESS GAME ----------------------
+.chess-game {
+
+  $clock-height: 20%;
+  $list-height: 20%;
+  $columns-height: 99vh;
+
+  .scroll-content {
+    padding: 5px !important;
+    overflow: hidden;
+  }
+
+  .view-area {
+    display: flex;
+    position: relative;
+  }
+
+  ////////////////////////////////// Chess section ///////////////////////////////////////
+
+  .chessboard-area {
+    order: 1;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: $columns-height;
+    position: relative;
+  }
+
+  ////////////////////////////////// Clocks section ///////////////////////////////////////
+
+  .white-clock {
+    order: 1;
+    height: $clock-height;
+    flex-grow: 1;
+    transform: rotate(180deg);
+  }
+
+  .chessboard {
+    order: 2;
+  }
+
+  .blitz_info {
+    order: 2;
+    height: 40%;
+  }
+
+  .black-clock {
+    height: $clock-height;
+    flex-grow: 1;
+    order: 3;
+  }
+
+  .blitz_clock {
+    width: 100vw;
+    z-index: 100;
+  }
+
+
+  ////////////////////////////////// Action section ///////////////////////////////////////
+
+  .actions-area {
+    order: 2;
+    width: 25%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    //justify-content: center;
+    height: $columns-height;
+    overflow: hidden;
+
+    .central-area {
+      background: #efefef;
+      margin: 10px 0px 10px 10px;
+      //border-radius: 10px;
+      //min-height: 60%;
+      flex-grow: 1;
+      //height: 60vh;
+      text-align: center;
+      justify-content: center;
+      display: flex;
+      position: relative;
+    }
+
+    .white-list-area {
+      transform: rotate(180deg);
+      height: $list-height;
+      flex-grow: 1;
+      overflow: scroll;
+    }
+
+    .black-list-area {
+      height: $list-height;
+      overflow: scroll;
+      flex-grow: 1;
+    }
+
+    .game-info {
+      width: 50%;
+      writing-mode: vertical-rl;
+      margin-left: 5px;
+      flex-grow: 1;
+      font-size: 5vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .title {
+        font-weight: 500;
+      }
+
+      .players_names_info {
+        font-size: 0.7em;
+        margin-top: 0.5em;
+      }
+    }
+
+    .extra_info_cnt {
+      position: absolute;
+      writing-mode: vertical-rl;
+      font-size: 11px;
+      text-align: right;
+      padding-bottom: 20px;
+      right: 0;
+      top: 0;
+    }
+
+    .buttons-cnt {
+      font-size: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      ion-icon {
+        transform: rotate(90deg);
+      }
+
+      .action-bnt {
+        button {
+          width: auto;
+          height: auto;
+          @media screen and (max-width: 320px) {
+            font-size: 0.5em;
+            padding: 5px 0px;
+          }
+          @media screen and (min-width: 350px) {
+            font-size: 0.8em;
+            padding: 10px 0px;
+          }
+          @media screen and (min-width: 600px) {
+            font-size: 1.3em;
+            padding: 20px 0px;
+          }
+        }
+      }
+    }
+
+  }
+
+  .blitz_actions-area {
+    height: 40vh !important;
+    margin: auto;
+  }
+
+  ///////////////////////////// CONFIG //////////////////////
+
+  .swap_sections_order {
+    .actions-area {
+      order: 1 !important;
+
+      .central-area {
+        transform: rotate(180deg);
+      }
+    }
+
+    .chessboard-area {
+      order: 2 !important;
+    }
+  }
+
+  .swap_sides_order {
+    .chessboard-area {
+      .black-clock {
+        order: 1 !important;
+        transform: rotate(180deg) !important;
+      }
+
+      .white-clock {
+        order: 3 !important;
+        transform: rotate(0deg) !important;
+      }
+    }
+  }
+
+}
+
+.score-sheet-only__chess-game {
+
+  .top_options {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    .logo_img { width: 100%;}
+    ion-fab {
+      position: relative !important;
+      .dot_btn { background: white; box-shadow: none;}
+    }
+  }
+
+  .scroll-content {
+    padding: 5px !important;
+    overflow: hidden;
+  }
+
+  .view-area {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 99vh;
+  }
+
+  ////////////////////////////////// Chess section ///////////////////////////////////////
+
+  .chessboard-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    height: 70vh;
+
+    .logo_img {
+      height: 25px;
+      background: transparent;
+
+      ion-img {
+        width: 50%;
+
+        img {
+          height: 100%;
+        }
+      }
+    }
+
+    //background-color: #394144;
+  }
+
+  ////////////////////////////////// Action section ///////////////////////////////////////
+
+  .actions-area {
+    display: flex;
+    height: 29vh;
+
+    padding-top: 0.3em !important;
+    padding-bottom: 0.7em !important;
+
+    .central-area {
+      order: 2;
+      background: #efefef;
+      text-align: center;
+      justify-content: center;
+      display: flex;
+      width: 70%;
+      margin: 0em 0.5em 1em 0.5em;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .white-list-area {
+      overflow: scroll;
+      width: 30%;
+    }
+
+    .black-list-area {
+      overflow: scroll;
+      width: 30%;
+      margin: 0em 0.5em 0.7em 0.5em;
+    }
+
+    .game-info {
+      margin-left: 5px;
+      flex-grow: 1;
+      font-size: 4vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .title {
+        font-weight: 500;
+        margin-bottom: 0.3em;
+        font-size: 5vw;
+      }
+
+      .players_names_info {
+        margin-top: 0.3em;
+      }
+    }
+
+    .extra_info_cnt {
+      position: absolute;
+      font-size: 11px;
+      text-align: right;
+      padding-bottom: 20px;
+      left: 0.5em;
+      top: 0.3em;
+    }
+
+    .moveHistoryContainer {
+      .item-block {
+        .label-md {
+          margin: 0;
+        }
+
+        background: #efefef !important;
+      }
+
+      .moveHistoryItem {
+        padding: 0.2em;
+      }
+    }
+
+    .buttons-cnt {
+      font-size: 10px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      order: 2;
+
+      .action-bnt {
+        button {
+          width: auto;
+          height: auto;
+          @media screen and (max-width: 320px) {
+            font-size: 0.5em;
+            padding: 5px 0px;
+          }
+          @media screen and (min-width: 350px) {
+            font-size: 0.8em;
+            padding: 10px 0px;
+          }
+          @media screen and (min-width: 600px) {
+            font-size: 1.3em;
+            padding: 20px 0px;
+          }
+        }
+      }
+    }
+
+  }
+
+}
+
+/////////////////////////// Game recovery -------------------------
+.games-recovery {
+  .game_card {
+    border-left: 10px solid #564d4d;
+    position: relative;
+    overflow: visible;
+  }
+
+  .fab_cnt {
+    .main_fab {
+      ion-icon {
+        transform: rotate(90deg);
+      }
+    }
+
+    ion-fab-list {
+      button {
+        color: white;
+        zoom: 1.2;
+      }
+
+      .delete {
+        background: $app_red;
+      }
+
+      .archive {
+        background: $app_dark;
+      }
+
+      .view {
+        background: forestgreen;
+      }
+    }
+
+  }
+
+  .card-header {
+    .title {
+      font-size: 1.3em;
+      font-weight: 500;
+      margin-bottom: 3px;
+      text-decoration: underline;
+    }
+
+    .dates {
+      margin-left: 10px;
+      color: dimgray;
+      font-size: 0.8em;
+    }
+
+    ion-icon {
+      font-size: 2.5em;
+      float: left;
+      margin: 0px 15px;
+    }
+  }
+
+  .card_cnt {
+    .game_cnt {
+      .event_title {
+        font-size: 1.1em;
+        font-weight: 500;
+      }
+
+      .game_info {
+        font-size: 0.8em;
+        margin-left: 10px;
+        white-space: normal;
+      }
+
+      .time_control {
+      }
+    }
+  }
+}
+
+
+/////////////////////////// PGN recovery -------------------------
+.pgn-recovery {
+
+  .logo_cnt {
+    text-align: center;
+    margin: 5em auto 2em;
+
+    .logo {
+      width: 15em;
+      height: 15em;
+      background: transparent;
+      border-radius: 20px;
+
+      img {
+        border-radius: 20px;
+      }
+    }
+  }
+
+  .counts_cnt {
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .recovery_boardContainer {
+    height: auto;
+  }
+
+  .recovery_boardContent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .recovery_boardElement {
+    //margin: auto;
+  }
+
+  .btn_cnt {
+    text-align: center;
+  }
+
+  .selected_game {
+    background-color: #fbb638;
+  }
+
+  .game_cnt {
+    .date_time {
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+
+    .info_cnt {
+      margin-left: 5px;
+      font-size: 0.9em;
+    }
+  }
+
+  .recovery_content {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+
+    .pgn_list {
+      width: 35%;
+      overflow: auto;
+    }
+
+    .chessboard_section {
+      width: 65%;
+      padding: 10px 10px 0px;
+      float: right;
+    }
+  }
+}
+
+/////////////////////////// FORM -------------------------
+.game_form {
+
+  ion-icon {
+    margin-right: 10px;
+    font-size: 1.5em;
+    color: $app_dark;
+  }
+
+  ion-label {
+    color: $app_dark;
+    font-weight: 500;
+    font-size: 1.3em !important;
+  }
+
+  input {
+    border-bottom: 1px solid gray;
+  }
+
+  .required {
+    color: $app_red !important;
+  }
+}
+
+
+

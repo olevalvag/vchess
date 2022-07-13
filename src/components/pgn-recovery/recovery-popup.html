@@ -1,0 +1,118 @@
+<ion-header class="app-modal-header">
+  <ion-navbar>
+    <ion-title> Data Recovery</ion-title>
+    <ion-buttons end>
+      <button (click)="closeModal()" icon-only ion-button>
+        <ion-icon item-right name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="recovery_content">
+
+    <div class="pgn_list">
+      <ion-list>
+        <ion-item (click)="onDataClick(game)"
+                  *ngFor="let game of getGameData()"
+                  [ngClass]="{'selected_game': isGameSelected(game)}"
+                  class="game_cnt">
+          <div class="date_time"> {{parseGameDate(game)}}</div>
+          <div class="info_cnt">
+            <div> Result: {{game.result}}</div>
+            <div> White clock: {{game.whiteClock}}</div>
+            <div> Black clock: {{game.blackClock}}</div>
+            <div> Turn: {{game.activeClock}}</div>
+          </div>
+          <div *ngIf="isGameSelected(game)" class="btn_cnt">
+            <button (click)="onRecoverClick(game)" ion-button> Recover</button>
+          </div>
+
+          <div *ngIf="isGameSelected(game)" class="btn_cnt">
+            <button (click)="onCopyClipboardClick(game)" ion-button> Copy to clipboard</button>
+          </div>
+
+        </ion-item>
+      </ion-list>
+
+
+    </div>
+
+    <div class="chessboard_section">
+      <div *ngIf="!isBlitzMode()">
+        <spinner [message]="'Rendering board'" [visible]="renderingBoard"></spinner>
+        <div class="recovery_boardContainer">
+          <div class="recovery_boardContent">
+            <div #recovery_board class="recovery_boardElement merida blue coordinates" id="recovery_board"></div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isBlitzMode()">
+        <div class="logo_cnt">
+          <ion-img class="logo" src="assets/app_logo_trans.png"></ion-img>
+        </div>
+        <div class="counts_cnt">
+          <div class="white_count"> White moves: {{getPlayerMoves('white')}} </div>
+          <div class="white_count"> Black moves: {{getPlayerMoves('black')}}</div>
+        </div>
+      </div>
+    </div>
+
+    <!--<ion-grid>
+      <ion-row>
+
+        <ion-col col-4>
+          <ion-list>
+            <ion-item class="game_cnt"
+                      *ngFor="let game of getGameData()"
+                      (click)="onDataClick(game)"
+                      [ngClass]="{'selected_game': isGameSelected(game)}">
+              <div class="date_time"> {{parseGameDate(game)}}</div>
+              <div class="info_cnt">
+                <div> Result: {{game.result}}</div>
+                <div> White clock: {{game.whiteClock}}</div>
+                <div> Black clock: {{game.blackClock}}</div>
+                <div> Turn: {{game.activeClock}}</div>
+              </div>
+              <div class="btn_cnt" *ngIf="isGameSelected(game)">
+                <button ion-button (click)="onRecoverClick(game)"> Recover</button>
+              </div>
+
+              <div class="btn_cnt" *ngIf="isGameSelected(game)">
+                <button ion-button (click)="onCopyClipboardClick(game)"> Copy to clipboard</button>
+              </div>
+
+            </ion-item>
+          </ion-list>
+        </ion-col>
+
+        <ion-col col-8>
+          <div class="board_cnt">
+            <div *ngIf="!isBlitzMode()">
+              <spinner [visible]="renderingBoard" [message]="'Rendering board'"></spinner>
+              <div class="recovery_boardContainer">
+                <div class="recovery_boardContent">
+                  <div #recovery_board id="recovery_board" class="recovery_boardElement merida blue coordinates"></div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="isBlitzMode()">
+              <div class="logo_cnt">
+                <ion-img class="logo" src="assets/app_logo_trans.png" ></ion-img>
+              </div>
+              <div class="counts_cnt">
+                <div class="white_count"> White moves: {{getPlayerMoves('white')}} </div>
+                <div class="white_count"> Black moves: {{getPlayerMoves('black')}}</div>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>-->
+
+  </div>
+
+</ion-content>

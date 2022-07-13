@@ -1,0 +1,20 @@
+time-controls {
+
+  .time_control_cnt {
+    border-bottom: 1px solid gray;
+
+    ion-list {
+      width: 90%;
+      margin: auto;
+
+      ion-item {
+        //font-size: 1.3rem !important;
+      }
+
+      ion-label {
+        font-weight: 400 !important;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,161 @@
+.table-card {
+
+  .setting_cnt {
+    border: 1px solid #7d7d7d;
+    border-radius: 15px;
+    background: white;
+    margin: 1.5em;
+    padding: 5px 0px;
+
+    .button_cnt {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+
+      .config_title {
+        margin-left: 20px;
+        font-weight: 500;
+        font-size: 1.4em;
+      }
+
+      .flip_sides {
+        transform: rotate(180deg);
+      }
+
+      button {
+        font-size: calc(10px + (25 - 10) * ((100vw - 300px) / (1600 - 300)));
+      }
+    }
+
+  }
+
+  .options_cnt {
+    margin-top: 1em;
+  }
+
+  .players-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .player_card {
+      width: 49%;
+    }
+  }
+
+  .tabletName {
+    font-size: 1em;
+  }
+
+  .waiting {
+    font-weight: 500;
+    text-decoration: dotted;
+  }
+
+  .card-container {
+    background-color: whitesmoke;
+  }
+
+  .tournament-name {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 600;
+  }
+
+  .round-table {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 1.5em;
+  }
+
+  .error_cnt {
+    border: 1px solid red;
+    border-left: 9vw solid #F5E5D6;
+    border-right: 9vw solid #F5E5D6;
+    border-radius: 20px;
+    padding: 5px;
+    width: 70%;
+    text-align: center;
+    margin: 15px auto;
+    font-size: 1.3em;
+    //color: #4c0000;
+    .error_txt {
+      text-align: justify;
+    }
+
+    .error_alert {
+      font-style: italic;
+      font-weight: 600;
+      color: $app_red;
+    }
+  }
+
+  .single_player_btn {
+    text-align: center;
+    margin: 2em 0em;
+  }
+
+  ion-item {
+    background-color: transparent !important;
+  }
+
+  flip-layout {
+    .layout_cnt {
+      width: 80%;
+      margin-bottom: 20px;
+    }
+
+    .inner_layout {
+      width: 90%;
+      margin: auto;
+    }
+  }
+
+  time-controls {
+    .time_control_cnt {
+      width: 80%;
+      margin: auto;
+
+      ion-label {
+        font-weight: 400;
+        font-size: 1.5em !important;
+      }
+    }
+  }
+
+  // ------------------------------------------------- FOR SMALL SCREENS!!
+  @media screen and (orientation: landscape) and (max-width: 1200px) {
+    .scroll-content {
+      padding: 0.6em !important;
+    }
+    .round-table {
+      font-size: 1.3em;
+      margin-bottom: 0.8em;
+    }
+    .players-container {
+      font-size: 1em;
+    }
+    .single_player_btn {
+      margin: 0.5em 0em;
+
+      button {
+        font-size: 1em;
+      }
+    }
+    .options_cnt {
+      margin-top: 0.5em;
+    }
+    .setting_cnt {
+      margin: 0.7em;
+
+      /*.button_cnt {
+        button {
+          font-size: calc(10px + (25 - 10) * ((100vw - 300px) / (1600 - 300)));
+        }
+      }*/
+    }
+  }
+
+}

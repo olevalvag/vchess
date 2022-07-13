@@ -1,0 +1,63 @@
+pid {
+
+  .description {
+    color: $app_dark;
+    margin: 5px auto;
+    width: 80%;
+    font-size: 1.3em;
+    text-align: justify;
+  }
+
+  .info-message {
+    color: #505050;
+    font-style: italic;
+    padding-left: 3em;
+  }
+
+  .pid-input-cnt {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    ion-label {
+      font-weight: 600;
+    }
+  }
+
+  .tablet-pid {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid darkgray;
+    font-size: 1.5em;
+    border-radius: 30px;
+    width: 70%;
+    margin: 2em auto;
+    padding: 0.5em 1em;
+    background-color: whitesmoke;
+
+    @media screen and (max-width: 850px) {
+      width: 100%;
+    }
+
+  }
+
+  .pid-container {
+    width: 60%;
+    margin: auto;
+
+    form {
+
+    }
+
+    @media screen and (max-width: 850px) {
+      width: 100%;
+    }
+
+    .btns-container {
+      text-align: center;
+      margin-top: 1.5em;
+    }
+
+  }
+}

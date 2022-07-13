@@ -1,0 +1,32 @@
+<ion-header class="app-modal-header">
+  <ion-navbar>
+    <ion-title> Tournament Mode</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="text_cnt">
+    Quisque gravida lacus blandit velit lobortis, id bibendum ex hendrerit. Integer efficitur, libero sed mollis lobortis, metus orci luctus ligula, placerat euismod quam lectus gravida metus.
+  </div>
+
+  <div class="text_cnt">
+    Read more on <a href="http://app.com/">app.com</a>
+  </div>
+
+  <!--Buttons section-->
+  <div class="btn_cnt">
+    <button (click)="onConnectClick()" ion-button> Connect to existing tournament</button>
+    <button (click)="onSingUpClick()" ion-button> Sign up for an account</button>
+  </div>
+
+  <div class="btn_cnt">
+    <button (click)="onCancelClick()" ion-button> Not now</button>
+  </div>
+
+  <div class="checkbox_cnt">
+    <span> Do not show this next time </span>
+    <ion-checkbox [(ngModel)]="noShowAgain"></ion-checkbox>
+  </div>
+
+</ion-content>
